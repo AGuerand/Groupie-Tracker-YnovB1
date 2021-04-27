@@ -1,48 +1,43 @@
 package main
 
 import (
-	"encoding/json"
+	"bufio"
+	"fmt"
+	"log"
 	"net/http"
+	"os"
 	"text/template"
 )
 
-type Article struct {
-	Title   string `json:"Title"`
-	Desc    string `json:"desc"`
-	Content string `json:"content"`
-	test    []string
-}
-
-type Articles []Article
-
-func allArticles(w http.ResponseWriter, r *http.Request) {
-
-}
-
-func HandleRequest(w http.ResponseWriter, r *http.Request) {
-	tmpl := template.Must(template.ParseFiles("index.html"))
-
-	articles := Articles{
-		Article{Title: "Test Title", Desc: "Test Description", Content: "Hello World"},
-	}
-
-	Letest := []string{
-		"John",
-		"Paul",
-		"George",
-		"Ringo",
-	}
-
-	json.NewEncoder(w).Encode(articles)
-
-	data := Article{
-		test: Letest,
-	}
-
-	tmpl.Execute(w, data)
-}
-
 func main() {
-	http.HandleFunc("/", HandleRequest)
-	http.ListenAndServe(":8081", nil)
+	http.HandleFunc("/", hom)
+	//http.HandleFunc("/about", abo)
+	http.Handle("/stuff/", http.StripPrefix("/stuff", http.FileServer(http.Dir("assets"))))
+
+	fmt.Printf("Starting server at port 8080\n")
+	if err := http.ListenAndServe(":8080", nil); err != nil {
+		log.Fatal(err)
+	}
+
 }
+
+var tpl *template.Template
+
+func init() {
+	tpl = template.Must(template.ParseGlob("templates/*.html"))
+}
+func hom(w http.ResponseWriter, r *http.Request) {
+	tpl.ExecuteTemplate(w, "default.html", Ascii)
+	arg := r.FormValue("Arg")
+	template := r.FormValue("Template")
+	asciiLetters, err := mapping(template) // recover the map
+	if err != nil {
+		//Do Something
+	}
+	phrase := []rune(arg) // create a slice of rune who have every character
+	Ascii(phrase, asciiLetters, w)
+}
+
+// func abo(w http.ResponseWriter, r *http.Request) {
+// 	tpl.ExecuteTemplate(w, "about.gohtml", nil)
+// }
