@@ -1,12 +1,16 @@
-html, body {
+html,
+body {
     max-width: 100%;
     overflow-x: hidden;
 }
-#top{
-    position:fixed;
-    top:0;
+
+#top {
+    position: fixed;
+    top: 0;
     z-index: 100;
-    background-color: white;
-    border-bottom: 2px solid black;
-    text-align: center
+    width: 100%;
+}
+
+.container-fluid {
+    flex-direction: row-reverse;
 }
