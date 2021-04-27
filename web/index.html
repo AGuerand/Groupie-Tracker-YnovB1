@@ -6,21 +6,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <title>Document</title>
 </head>
+
 <body>
-    <div class="container-fluid p-0 my-0" id="top">
-        <div class="row">
-            <div class="col-sm-1">
-                <p style="font-size:2vw;">Logo</p>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Groupie Tracker</a>
             </div>
-            <div class="col-sm-4">
-                <p style="font-size:2vw;">Groupie-Tracker</p>
-            </div>
-            <div class="col-sm-2">
-                <p style="font-size:2vw;">Button</p>
-            </div>
+<<<<<<< HEAD
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#">Page 1</a></li>
+                <li><a href="#">Page 2</a></li>
+            </ul>
+            <form class="navbar-form navbar-right" action="/action_page.php">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" name="search">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </div>
+=======
             <div class="col-sm-2">
                 <p style="font-size:2vw;">Button</p>
             </div>
@@ -29,13 +39,11 @@
             </div>
             <div class="col-sm-1">
                     <p style="font-size:2vw;">Search</p>
+>>>>>>> f1ec384b6a313fa577dbab2200b9c3c24304ebb7
                 </div>
-            </div>
+            </form>
         </div>
-    <div>
-        {{range .test}}
-        <pre> {{.}} </pre> {{end}}
-    </div>
+    </nav>
 </body>
 
 </html>
