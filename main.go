@@ -44,7 +44,6 @@ func LoadData() {
 	var regex_bracket = regexp.MustCompile(`{([^{}]*)}`)
 
 	for index, link := range APIData {
-
 		response, err := http.Get(link)
 		if err != nil {
 			fmt.Printf("Request failed %s\n", err)
@@ -64,10 +63,7 @@ func LoadData() {
 			}
 		}
 	}
-	// for i := 0; i < 7; i++ {
-	// 	fmt.Println(Artists[51].relation.locations[i], Artists[51].relation.dates[i])
-	// }
-
+	// fmt.Println(Artists[0].relation)
 }
 func Get_ArtitsData(Data []string, Artists []ArtistsData) []ArtistsData {
 	var regex_image = regexp.MustCompile(`https://.+.jpeg`)
@@ -109,6 +105,7 @@ func Get_RelationData(Data []string, Artists []ArtistsData) []ArtistsData {
 	locations := make([]string, 0)
 	dates := make([]string, 0)
 	datesToSlice := ""
+	result := RelationData{}
 
 	for Artists_index, element := range Data {
 		for _, location := range regex_locations.FindAllStringSubmatch(element, -1) {
@@ -148,7 +145,10 @@ func Get_RelationData(Data []string, Artists []ArtistsData) []ArtistsData {
 			}
 			LastIndex = indexFlag[0]
 		}
-		Artists[Artists_index].relation = RelationData{locations, dates}
+		result = RelationData{locations, dates}
+		Artists[Artists_index].relation = result
+		fmt.Println("num :", Artists_index, Artists[0].relation)
+		fmt.Println(result)
 		LastIndex = 0
 		locations = locations[:0]
 		dates = dates[:0]
