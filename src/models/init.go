@@ -52,9 +52,6 @@ func LoadData() []ArtistsData {
 			}
 		}
 	}
-	for i := 0; i < 51; i++ {
-		fmt.Println(Artists[i].relation)
-	}
 
 	return Artists
 }
