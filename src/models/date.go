@@ -1,22 +1,6 @@
-package models
+package model
 
 import "regexp"
-
-type RelationData struct {
-	locations []string
-	dates     []string
-}
-
-type ArtistsData struct {
-	relation     RelationData
-	image        string
-	name         string
-	members      string
-	creationDate string
-	firstAlbum   string
-	locations    string
-	dates        string
-}
 
 func Get_DatesData(Data []string, Artists []ArtistsData) []ArtistsData {
 	var regex_dates = regexp.MustCompile(`"dates":\[(.+)\]`)
