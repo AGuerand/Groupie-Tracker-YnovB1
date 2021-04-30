@@ -8,19 +8,19 @@ import (
 )
 
 type RelationData struct {
-	locations []string
-	dates     []string
+	Locations []string
+	Dates     []string
 }
 
 type ArtistsData struct {
-	relation     RelationData
-	image        string
-	name         string
-	members      string
-	creationDate string
-	firstAlbum   string
-	locations    string
-	dates        string
+	Relation     RelationData
+	Image        string
+	Name         string
+	Members      string
+	CreationDate string
+	FirstAlbum   string
+	Locations    string
+	Dates        string
 }
 
 func LoadData() []ArtistsData {

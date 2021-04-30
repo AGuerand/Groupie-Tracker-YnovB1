@@ -51,8 +51,8 @@ func Get_RelationData(Data []string, Artists []ArtistsData) []ArtistsData {
 			}
 			LastIndex = indexFlag[0]
 		}
-		Artists[Artists_index].relation.locations = locations
-		Artists[Artists_index].relation.dates = dates
+		Artists[Artists_index].Relation.Locations = locations
+		Artists[Artists_index].Relation.Dates = dates
 		// fmt.Println(locations, dates)
 		LastIndex = 0
 		locations = locations[:0]
