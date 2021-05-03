@@ -1,0 +1,61 @@
+.img :hover{
+    filter: blur(4px) grayscale(1) brightness(30%) !important;
+}
+body {
+    /* overflow-y: hidden; Hide vertical scrollbar */
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+
+.img{
+    position: relative;
+    text-align: center;
+    /* filter: grayscale(0); */
+}
+.txt{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    display: none;
+}
+#logo{
+    height: auto;
+    width: 30%;
+    margin-left: 30%;
+    margin-top: -4%;
+}
+#img{
+    height: auto;
+    width: 100%;
+    margin-left: 5%;
+    padding-right: 10%;
+    padding-top: 5%;
+}
+.card{
+    margin-left: 5% !important  ;
+    margin-right: 5% !important;
+    margin-top: 5% !important;
+    margin-bottom: 3% !important;
+    border-radius: 2%;
+}
+#logoside{
+    height: auto;
+    width: 40%;
+}
+.btn{
+    margin-left: 2%;
+    background-color:darkgrey !important;
+    margin-bottom: 10% !important;
+    background-color:dodgerblue  !important;
+}
+.navbar-brand{
+    margin-left: 2%;
+}
+#txtSearch{
+    width: 20vw;
+}
+.navbar-link{
+    margin-top: 2%;
+    height: fit-content;
+}
