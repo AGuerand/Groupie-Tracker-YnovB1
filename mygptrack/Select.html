@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Axentix Layout - Fixed sidenav</title>
+    <meta charset="utf-8">
+    <link href="select.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/axentix@1.2.1/dist/css/axentix.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script type="text/javascript" src="./script.js"></script>  
+  </head>
+
+  <body class="layout airforce dark-4 with-sidenav fixed-sidenav">
+    <header>
+      <nav class="navbar airforce dark-5">
+        <!-- <a href="./index.html" target="_blank" class="navbar-brand">Groupie Tracker</a> -->
+        <a href="./index.html" class="navbar-brand ml-0.5">Groupie Tracker</a>
+        <div class="navbar-menu ml-auto">
+          <a class="navbar-link" href="./Select.html">Select</a>
+          <a class="navbar-link" href="#" id="us">About Us</a>
+          <form action="/hms/accommodations" method="GET"> 
+            <div class="row">
+              <div class="col-xs-6 col-md-4">
+                <div class="input-group">
+                  <input type="text" class="form-control navbar-btn" placeholder="Search" id="txtSearch"/>
+                  <div class="input-group-btn">
+                    <button class="btn btn-primary navbar-btn" type="submit">
+                      <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </nav>
+    </header>
+
+    <div id="example-sidenav" data-ax="sidenav" class="sidenav shadow-1 large fixed airforce dark-5">
+      <div class="sidenav-header">
+        <button data-target="example-sidenav" class="sidenav-trigger"><i class="fas fa-times"></i></button>
+        <img class="sidenav-logo" src="logo.png" alt="Logo" id="logoside"/>
+        <!-- <img class="sidenav-logo dropshadow-1" src="logo.png" alt="Logo" /> -->
+      </div>
+      <a href="#" class="sidenav-link active">Filter 1</a>
+      <a href="#" class="sidenav-link">Filter 2</a>
+      <a href="#" class="sidenav-link">Filter 3</a>
+      <a href="#" class="sidenav-link">Filter 4</a>
+    </div>
+
+    <main>
+      <!-- Code here the main content -->
+      <button data-target="example-sidenav"
+        class="btn rounded-1 press amaranth dark-1 sidenav-trigger hide-md-up">
+          Open sidenav
+      </button>
+      <div class="grix xs1 md2 lg2">
+        <div class="img">
+          <img class="img-responsive dropshadow-5" onmouseover="displays('txt1')" onmouseleave="displaysnot('txt1')" src="./023T99YLP2MWqYGnYHfYlDD-1.fit_lim.size_1050x.jpg" alt="Music" id="img">
+          <div class="txt" onmouseover="displays('txt1')" onmouseleave="displaysnot('txt1')" id="txt1">Quod amor dolor. Perdere enim aliquem, cum post gloriam misit nos oritur odium. Qui odium et vindictam ego retribuam est productum est mors sequitur. Sed non est in morte sola mors ultra. Hoc erit ultra oriuntur dolores subiti. Maledictus eris in hoc mundo vivimus in, est quia odio cursus nec ultra cessaverunt. Sequor et idem velle. Fiat mihi hanc quaeritur: Quid vultis ut iudicio contendam adversum hanc odio creare paci?</div>
+        </div>
+        <div class="img">
+          <img class="img-responsive" onmouseover="displays('txt2')" onmouseleave="displaysnot('txt2')" src="./1522000.jpg" alt="Concert" id="img">
+          <div class="txt" onmouseover="displays('txt2')" onmouseleave="displaysnot('txt2')" id="txt2">Quod amor dolor. Perdere enim aliquem, cum post gloriam misit nos oritur odium. Qui odium et vindictam ego retribuam est productum est mors sequitur. Sed non est in morte sola mors ultra. Hoc erit ultra oriuntur dolores subiti. Maledictus eris in hoc mundo vivimus in, est quia odio cursus nec ultra cessaverunt. Sequor et idem velle. Fiat mihi hanc quaeritur: Quid vultis ut iudicio contendam adversum hanc odio creare paci?</div>
+        </div>
+      </div>
+      <div class="grix xs1 md2 lg2">
+        <!-- <div class="img2">
+          <img class="img-responsive" src="./023T99YLP2MWqYGnYHfYlDD-1.fit_lim.size_1050x.jpg" alt="Music" id="img">
+          <div class="txt" id="txt3">Quod amor dolor. Perdere enim aliquem, cum post gloriam misit nos oritur odium. Qui odium et vindictam ego retribuam est productum est mors sequitur. Sed non est in morte sola mors ultra. Hoc erit ultra oriuntur dolores subiti. Maledictus eris in hoc mundo vivimus in, est quia odio cursus nec ultra cessaverunt. Sequor et idem velle. Fiat mihi hanc quaeritur: Quid vultis ut iudicio contendam adversum hanc odio creare paci?</div>
+        </div> -->
+        <!-- Card1 -->
+        <div class="card airforce light-1 shadow-1 dropshadow-5">
+          <div class="card-image">
+            <img class="img-responsive" src="./023T99YLP2MWqYGnYHfYlDD-1.fit_lim.size_1050x.jpg" alt="Music" id="img">
+          </div>
+          <div class="card-header">Card Header</div>
+          <div class="divider"></div>
+          <div class="card-content">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi suscipit harum repellat architecto unde vel numquam rem
+            doloribus maiores deserunt tenetur labore, aut, adipisci sit, sequi nihil voluptas commodi? Velit?
+          </div>
+          <div class="divider"></div>
+          <div class="card-footer">Card Footer</div>
+        </div>
+        <!-- Card2 -->
+        <div class="card airforce light-1 shadow-5">
+          <div class="card-image">
+            <img class="img-responsive" src="./1522000.jpg" alt="Music" id="img">
+          </div>
+          <div class="card-header">Card Header</div>
+          <div class="card-content">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi suscipit harum repellat architecto unde vel numquam rem
+            doloribus maiores deserunt tenetur labore, aut, adipisci sit, sequi nihil voluptas commodi? Velit?
+          </div>
+          <div class="card-footer">Card Footer</div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer airforce dark-5">
+      Copyright © 2021 - Example
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/axentix@1.2.1/dist/js/axentix.min.js"></script>
+  </body>
+</html>
