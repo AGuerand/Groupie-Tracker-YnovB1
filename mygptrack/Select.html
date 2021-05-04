@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/axentix@1.2.1/dist/css/axentix.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script type="text/javascript" src="../assets/script.js"></script>
 </head>
 
 <body class="layout airforce dark-4 with-sidenav fixed-sidenav">
@@ -53,27 +54,11 @@
         <button data-target="example-sidenav" class="btn rounded-1 press amaranth dark-1 sidenav-trigger hide-md-up">
           Open sidenav
       </button>
-        <div class="grix xs1 md2 lg4">
-            <div class="img">
-                <img class="img-responsive dropshadow-5" onmouseover="displays('txt1')" onmouseleave="displaysnot('txt1')" src="../assets/023T99YLP2MWqYGnYHfYlDD-1.fit_lim.size_1050x.jpg" alt="Music" id="img">
-                <div class="txt" onmouseover="displays('txt1')" onmouseleave="displaysnot('txt1')" id="txt1">Quod amor dolor. Perdere enim aliquem, cum post gloriam misit nos oritur odium. Qui odium et vindictam ego retribuam est productum est mors sequitur. Sed non est in morte sola mors ultra. Hoc erit ultra oriuntur dolores subiti. Maledictus
-                    eris in hoc mundo vivimus in, est quia odio cursus nec ultra cessaverunt. Sequor et idem velle. Fiat mihi hanc quaeritur: Quid vultis ut iudicio contendam adversum hanc odio creare paci?</div>
-            </div>
-            <div class="img">
-                <img class="img-responsive" onmouseover="displays('txt2')" onmouseleave="displaysnot('txt2')" src="../assets/1522000.jpg" alt="Concert" id="img">
-                <div class="txt" onmouseover="displays('txt2')" onmouseleave="displaysnot('txt2')" id="txt2">Quod amor dolor. Perdere enim aliquem, cum post gloriam misit nos oritur odium. Qui odium et vindictam ego retribuam est productum est mors sequitur. Sed non est in morte sola mors ultra. Hoc erit ultra oriuntur dolores subiti. Maledictus
-                    eris in hoc mundo vivimus in, est quia odio cursus nec ultra cessaverunt. Sequor et idem velle. Fiat mihi hanc quaeritur: Quid vultis ut iudicio contendam adversum hanc odio creare paci?</div>
-            </div>
-            <!-- </div>
-      <div class="grix xs1 md3 lg4"> -->
-            <!-- <div class="img2">
-          <img class="img-responsive" src="./023T99YLP2MWqYGnYHfYlDD-1.fit_lim.size_1050x.jpg" alt="Music" id="img">
-          <div class="txt" id="txt3">Quod amor dolor. Perdere enim aliquem, cum post gloriam misit nos oritur odium. Qui odium et vindictam ego retribuam est productum est mors sequitur. Sed non est in morte sola mors ultra. Hoc erit ultra oriuntur dolores subiti. Maledictus eris in hoc mundo vivimus in, est quia odio cursus nec ultra cessaverunt. Sequor et idem velle. Fiat mihi hanc quaeritur: Quid vultis ut iudicio contendam adversum hanc odio creare paci?</div>
-        </div> -->
+        <div class="grix xs1 md2 lg3" id="start">
             <!-- Card1 -->
             <div class="card airforce light-1 shadow-1 dropshadow-5">
                 <div class="card-image">
-                    <img class="img-responsive" src="../assets/023T99YLP2MWqYGnYHfYlDD-1.fit_lim.size_1050x.jpg" alt="Music" id="img">
+                    <img class="img-responsive" src={{.}} alt="Music" id="img">
                 </div>
                 <div class="card-header">Card Header</div>
                 <div class="divider"></div>
@@ -83,18 +68,10 @@
                 <div class="divider"></div>
                 <div class="card-footer">Card Footer</div>
             </div>
-            <!-- Card2 -->
-            <div class="card airforce light-1 shadow-5">
-                <div class="card-image">
-                    <img class="img-responsive" src="../assets/1522000.jpg" alt="Music" id="img">
-                </div>
-                <div class="card-header">Card Header</div>
-                <div class="card-content">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi suscipit harum repellat architecto unde vel numquam rem doloribus maiores deserunt tenetur labore, aut, adipisci sit, sequi nihil voluptas commodi? Velit?
-                </div>
-                <div class="card-footer">Card Footer</div>
-            </div>
-        </div>
+            <!-- Card1 end -->
+            <script type="text/javascript">
+                create();
+            </script>
     </main>
 
     <footer class="footer airforce dark-5">
