@@ -5,18 +5,18 @@ function create() {
     var img = golangVar.match(normal);
     console.log(img);
 
-    for (i = 0; i <= 51; i++) {
+    for (i = 0; i <= 55; i++) {
         var div1 = document.createElement('div');
         div1.setAttribute('class', 'card airforce light-1 shadow-1 dropshadow-5')
-        div1.setAttribute('id', 'Here')
 
         var div2 = document.createElement('div');
         div2.setAttribute('class', 'card-image')
 
+
         var divimage = document.createElement('img');
         divimage.setAttribute('class', 'img-responsive')
-        divimage.setAttribute('src', img[i])
         divimage.setAttribute('id', 'img')
+        divimage.setAttribute('src', img[i])
         divimage.setAttribute('alt', 'Music')
 
         var div3 = document.createElement('div');
@@ -44,6 +44,12 @@ function create() {
         div2.appendChild(divimage)
     }
 }
+
+function deletes() {
+    const myNode = document.getElementById("start")
+    myNode.innerHTML = ""
+}
+
 function displays(a) {
     var x = document.getElementById(a);
     x.style.display = "block"
