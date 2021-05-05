@@ -57,13 +57,17 @@ func hom(w http.ResponseWriter, r *http.Request) {
 }
 
 func choose(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("HOM")
 	Artists := model.LoadData()
-	i:= 0
-	test := Artists[i].Image
-	fmt.Println("zdfguilqszdfuifazGZZFGUZUK")
+	TooPrint := make([]string,0)
 	tpl := template.Must(template.ParseFiles("mygptrack/Select.html"))
-
-	err := tpl.Execute(w, test)
+	for i := range Artists{
+		TooPrint = append(TooPrint,Artists[i].Image)
+	}
+	data := PageData{
+		Image: TooPrint,
+	}
+	err := tpl.Execute(w, data)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -72,26 +76,12 @@ func choose(w http.ResponseWriter, r *http.Request) {
 
 func test(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("HOM")
-	// fmt.Println("Chargement des struct : (200) ")
 	Artists := model.LoadData()
-	// i:= 0
-	// for index, data := range Artists {
-		// 	fmt.Println("Artist n:", index+1, " Nom:", data.Name, " Membre:", data.Members)
-	// 	fmt.Println("Date de création:", data.CreationDate, " Date du premier album:", data.FirstAlbum)
-	// 	fmt.Println("image du groupe:", data.Image)
-	// 	fmt.Println("Lieu des concerts:", data.Locations)
-	// 	fmt.Println("Dates des concerts:", data.Dates)
-	// 	fmt.Println()
-	// }
 	TooPrint := make([]string,0)
 	tpl := template.Must(template.ParseFiles("mygptrack/test.html"))
-
 	for i := range Artists{
-		
 		TooPrint = append(TooPrint,Artists[i].Image)
 	}
-	
-	
 	data := PageData{
 		Image: TooPrint,
 	}
@@ -100,3 +90,4 @@ func test(w http.ResponseWriter, r *http.Request) {
 		log.Fatal(err)
 	}
 	}
+
