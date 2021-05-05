@@ -8,6 +8,7 @@
     <link type="text/css" href="../assets/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/axentix@1.2.1/dist/css/axentix.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script type="text/javascript" src="../assets/script.js"></script>
 </head>
 
 <body class="layout airforce dark-4">
@@ -28,8 +29,8 @@
                                 <input type="text" class="form-control" placeholder="Search" id="txtSearch" />
                                 <div class="input-group-btn">
                                     <button class="btn btn-primary" type="submit">
-                      <span class="glyphicon glyphicon-search"></span>
-                    </button>
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -64,28 +65,6 @@
     <footer class="footer airforce dark-5">
         Copyright © 2021 - Example
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/axentix@1.2.1/dist/js/axentix.min.js"></script>
-    <script type="text/javascript">
-        function displays(a) {
-            var x = document.getElementById(a);
-            x.style.display = "block"
-        }
-
-        function displaysnot(a) {
-            var x = document.getElementById(a);
-            x.style.display = "none"
-        }
-
-        for (let i = 0; i < 3; i++) {
-            var div = document.createElement("div");
-            // div.style.width = "100px";
-            // div.style.height = "100px";
-            // div.style.background = "red";
-            // div.style.color = "white";
-            div.innerHTML = "<img src='{{.}}'>";
-            document.body.appendChild(div);
-        }
-    </script>
 </body>
 
 </html>

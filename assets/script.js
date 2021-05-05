@@ -42,7 +42,14 @@ function create() {
         div1.appendChild(div4)
         div1.appendChild(div5)
         div2.appendChild(divimage)
-
-
     }
+}
+function displays(a) {
+    var x = document.getElementById(a);
+    x.style.display = "block"
+}
+
+function displaysnot(a) {
+    var x = document.getElementById(a);
+    x.style.display = "none"
 }
