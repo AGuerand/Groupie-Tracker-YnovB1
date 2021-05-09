@@ -16,7 +16,7 @@ type ArtistsData struct {
 	Relation     RelationData
 	Image        string
 	Name         string
-	Members      string
+	Members      []string
 	CreationDate string
 	FirstAlbum   string
 	Locations    string
