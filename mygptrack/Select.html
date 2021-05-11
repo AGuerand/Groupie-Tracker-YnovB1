@@ -10,69 +10,74 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script type="text/javascript" src="../assets/script.js"></script>
     <script>
-        function create(){
-    var golangVar = "{{.Image}}";
-    console.log(golangVar);
-    const normal = /https:\/\/groupietrackers.herokuapp.com\/api\/images\/\w*.jpeg/g;
-    var img = golangVar.match(normal);
-    console.log(img);
+        function create() {
+            var golangVar = "{{.Image}}";
+            var NameInfo = "{{.Name}}";
+            var MembersInfo = "{{.Members}}"
+            console.log(MembersInfo);
+            var test = NameInfo.split(' a ')
+            console.log(test);
+            const normal = /https:\/\/groupietrackers.herokuapp.com\/api\/images\/\w*.jpeg/g;
+            // /\(.*?)AAA/ig
+            var img = golangVar.match(normal);
+            
+            for (i = 0; i <= 51; i++) {
+                    var div1 = document.createElement('div');
+                    div1.setAttribute('class', 'card airforce light-1 shadow-1 dropshadow-5')
 
-    for (i = 0; i <= 51; i++) {
-        var div1 = document.createElement('div');
-        div1.setAttribute('class', 'card airforce light-1 shadow-1 dropshadow-5')
-
-        var div2 = document.createElement('div');
-        div2.setAttribute('class', 'card-image')
+                    var div2 = document.createElement('div');
+                    div2.setAttribute('class', 'card-image')
 
 
-        var divimage = document.createElement('img');
-        divimage.setAttribute('class', 'img-responsive')
-        divimage.setAttribute('id', 'img')
-        divimage.setAttribute('src', img[i])
-        divimage.setAttribute('alt', 'Music')
+                    var divimage = document.createElement('img');
+                    divimage.setAttribute('class', 'img-responsive')
+                    divimage.setAttribute('id', 'img')
+                    divimage.setAttribute('src', img[i])
+                    divimage.setAttribute('alt', 'Music')
 
-        var div3 = document.createElement('div');
-        var txt3 = document.createTextNode("Card Header")
-        div3.setAttribute('class', 'card-header')
-        div3.appendChild(txt3)
+                    var div3 = document.createElement('div');
+                    var txt3 = document.createTextNode("Card Header")
+                    div3.setAttribute('class', 'card-header')
+                    div3.appendChild(txt3)
+                    
+                    var div4 = document.createElement('div');
+                    var txt4 = document.createTextNode(test[i+1])
+                    div4.setAttribute('class', 'card-content')
+                    div4.appendChild(txt4)
+                    
+                    var div5 = document.createElement('div');
+                    var txt5 = document.createTextNode("Card Footer")
+                    div5.setAttribute('class', 'card-footer')
+                    div5.appendChild(txt5)
+                    var parent = document.getElementById("start")
+                    
+                    document.body.appendChild(div1);
+                    parent.appendChild(div1)
+                    div1.appendChild(div2)
+                    div1.appendChild(div3)
+                    div1.appendChild(div4)
+                    div1.appendChild(div5)
+                    div2.appendChild(divimage)
+                }
+            }
+            </script>
 
-        var div4 = document.createElement('div');
-        var txt4 = document.createTextNode("Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi suscipit harum repellat architecto unde vel numquam rem doloribus maiores deserunt tenetur labore, aut, adipisci sit, sequi nihil voluptas commodi? Velit?")
-        div4.setAttribute('class', 'card-content')
-        div4.appendChild(txt4)
-
-        var div5 = document.createElement('div');
-        var txt5 = document.createTextNode("Card Footer")
-        div5.setAttribute('class', 'card-footer')
-        div5.appendChild(txt5)
-        var parent = document.getElementById("start")
-
-        document.body.appendChild(div1);
-        parent.appendChild(div1)
-        div1.appendChild(div2)
-        div1.appendChild(div3)
-        div1.appendChild(div4)
-        div1.appendChild(div5)
-        div2.appendChild(divimage)
-
-    }
-}
-    </script>
 </head>
 
 <body class="layout airforce dark-4 with-sidenav fixed-sidenav">
     <header>
         <nav class="navbar airforce dark-5">
             <!-- <a href="./index.html" target="_blank" class="navbar-brand">Groupie Tracker</a> -->
-            <a href="./index.html" class="navbar-brand ml-0.5">Groupie Tracker</a>
+            <a href="/" class="navbar-brand ml-0.5">Groupie Tracker</a>
             <div class="navbar-menu ml-auto">
-                <a class="navbar-link" href="/Select">Select</a>
+                <!-- <a class="navbar-link" href="/Select">Select</a> -->
                 <a class="navbar-link" href="#" id="us">Us</a>
                 <form action="/hms/accommodations" method="GET">
                     <div class="row">
                         <div class="col-xs-6 col-md-4">
                             <div class="input-group">
-                                <input type="text" class="form-control navbar-btn" placeholder="Search" id="txtSearch" />
+                                <input type="text" class="form-control navbar-btn" placeholder="Search"
+                                    id="txtSearch" />
                                 <div class="input-group-btn">
                                     <button class="btn btn-primary navbar-btn" type="submit">
                                         <span class="glyphicon glyphicon-search"></span>
@@ -101,16 +106,18 @@
     <main>
         <!-- Code here the main content -->
         <button data-target="example-sidenav" class="btn rounded-1 press amaranth dark-1 sidenav-trigger hide-md-up">
-          Open sidenav
+            Open sidenav
         </button>
         <div class="grix xs1 md2 lg3" id="start">
             <script type="text/javascript">
                 create();
             </script>
     </main>
-
     <footer class="footer airforce dark-5">
-        Copyright © 2021 - Example
+        <marquee>
+            Copyright © 2021 - Example                
+            <img src="../assets/logo.png" height="30px" width="30px">
+        </marquee>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/axentix@1.2.1/dist/js/axentix.min.js"></script>
 </body>
