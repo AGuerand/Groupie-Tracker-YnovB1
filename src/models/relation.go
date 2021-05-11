@@ -1,6 +1,7 @@
 package model
 
 import (
+	// "fmt"
 	"regexp"
 )
 
@@ -11,6 +12,7 @@ func Get_RelationData(Data []string, Artists []ArtistsData) []ArtistsData {
 	locations := make([]string, 0)
 	dates := make([]string, 0)
 	datesToSlice := ""
+
 	// result := RelationData{}
 
 	for Artists_index, element := range Data {
@@ -22,7 +24,7 @@ func Get_RelationData(Data []string, Artists []ArtistsData) []ArtistsData {
 			} else if index == len(regex_locations.FindAllStringIndex(element, -1))-1 {
 				for i, date := range regex_dates.FindAllStringSubmatch(element[LastIndex:indexFlag[0]], -1) {
 					if i == 0 {
-						datesToSlice += date[1]
+						datesToSlice += "|" + date[1]
 					} else {
 						datesToSlice += " " + date[1]
 					}
@@ -31,7 +33,7 @@ func Get_RelationData(Data []string, Artists []ArtistsData) []ArtistsData {
 				datesToSlice = ""
 				for i, date := range regex_dates.FindAllStringSubmatch(element[indexFlag[0]:len(element)-1], -1) {
 					if i == 0 {
-						datesToSlice += date[1]
+						datesToSlice += "|" + date[1]
 					} else {
 						datesToSlice += " " + date[1]
 					}
@@ -41,7 +43,7 @@ func Get_RelationData(Data []string, Artists []ArtistsData) []ArtistsData {
 			} else {
 				for i, date := range regex_dates.FindAllStringSubmatch(element[LastIndex:indexFlag[0]], -1) {
 					if i == 0 {
-						datesToSlice += date[1]
+						datesToSlice += "|" + date[1]
 					} else {
 						datesToSlice += " " + date[1]
 					}
@@ -51,15 +53,17 @@ func Get_RelationData(Data []string, Artists []ArtistsData) []ArtistsData {
 			}
 			LastIndex = indexFlag[0]
 		}
+
 		Artists[Artists_index].Relation.Locations = locations
 		Artists[Artists_index].Relation.Dates = dates
-		// fmt.Println(locations, dates)
+		// fmt.Println(locations, dates) // valide
 		LastIndex = 0
 		locations = locations[:0]
 		dates = dates[:0]
+		// fmt.Println(Artists[Artists_index].Relation) // valide ???
 	}
-	// for i := 0; i < 51; i++ {
-	// 	fmt.Println(Artists[i].relation)
+	// for i := range Artists {
+	// 	fmt.Println(Artists[i].Relation)
 	// }
 	return Artists
 }
