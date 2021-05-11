@@ -12,55 +12,74 @@
     <script>
         function create() {
             var golangVar = "{{.Image}}";
+
+
+
             var NameInfo = "{{.Name}}";
             var MembersInfo = "{{.Members}}"
+            var CreationDate = "{{.CreationDate}}"
+            var First = "{{.FirstAlbum}}"
+
             console.log(MembersInfo);
-            var test = NameInfo.split(' a ')
-            console.log(test);
+
+            const DateSplit = /\d{4}/g;
+            const FirstSplit = /\d{2}\W\d{2}\W\d{4}/g;
             const normal = /https:\/\/groupietrackers.herokuapp.com\/api\/images\/\w*.jpeg/g;
-            // /\(.*?)AAA/ig
+
+            var DateReg = CreationDate.match(DateSplit)
+            var FirstReg = First.match(FirstSplit)
             var img = golangVar.match(normal);
-            
+            var MembersReg = MembersInfo.split('] [')
+            var test = NameInfo.split(' a ')
+
+            console.log(MembersReg);
+
             for (i = 0; i <= 51; i++) {
-                    var div1 = document.createElement('div');
-                    div1.setAttribute('class', 'card airforce light-1 shadow-1 dropshadow-5')
+                var div1 = document.createElement('div');
+                div1.setAttribute('class', 'card airforce light-1 shadow-1 dropshadow-5')
 
-                    var div2 = document.createElement('div');
-                    div2.setAttribute('class', 'card-image')
+                var div2 = document.createElement('div');
+                div2.setAttribute('class', 'card-image')
+
+                var divimage = document.createElement('img');
+                divimage.setAttribute('class', 'img-responsive')
+                divimage.setAttribute('id', 'img')
+                divimage.setAttribute('src', img[i])
+                divimage.setAttribute('alt', 'Music')
+
+                var div3 = document.createElement('div');
+                var txt3 = document.createTextNode(test[i + 1])
+                div3.setAttribute('class', 'card-header')
+                div3.appendChild(txt3)
+
+                var div4 = document.createElement('div');
+                var txt4 = document.createTextNode(MembersReg[i]) //lorem ipsum
+                div4.setAttribute('class', 'card-content')
+                div4.appendChild(txt4)
 
 
-                    var divimage = document.createElement('img');
-                    divimage.setAttribute('class', 'img-responsive')
-                    divimage.setAttribute('id', 'img')
-                    divimage.setAttribute('src', img[i])
-                    divimage.setAttribute('alt', 'Music')
+                var div5 = document.createElement('div');
+                var txt5 = document.createTextNode("CreationDate: " + DateReg[i])
+                div5.setAttribute('class', 'card-content')
+                div5.appendChild(txt5)
+                var parent = document.getElementById("start")
 
-                    var div3 = document.createElement('div');
-                    var txt3 = document.createTextNode("Card Header")
-                    div3.setAttribute('class', 'card-header')
-                    div3.appendChild(txt3)
-                    
-                    var div4 = document.createElement('div');
-                    var txt4 = document.createTextNode(test[i+1])
-                    div4.setAttribute('class', 'card-content')
-                    div4.appendChild(txt4)
-                    
-                    var div5 = document.createElement('div');
-                    var txt5 = document.createTextNode("Card Footer")
-                    div5.setAttribute('class', 'card-footer')
-                    div5.appendChild(txt5)
-                    var parent = document.getElementById("start")
-                    
-                    document.body.appendChild(div1);
-                    parent.appendChild(div1)
-                    div1.appendChild(div2)
-                    div1.appendChild(div3)
-                    div1.appendChild(div4)
-                    div1.appendChild(div5)
-                    div2.appendChild(divimage)
-                }
+                var div6 = document.createElement('div');
+                var txt6 = document.createTextNode(("FirstAlbum: " + FirstReg[i])) //lorem ipsum
+                div6.setAttribute('class', 'card-footer')
+                div6.appendChild(txt6)
+
+                document.body.appendChild(div1);
+                parent.appendChild(div1)
+                div1.appendChild(div2)
+                div1.appendChild(div3)
+                div1.appendChild(div4)
+                div1.appendChild(div5)
+                div1.appendChild(div6)
+                div2.appendChild(divimage)
             }
-            </script>
+        }
+    </script>
 
 </head>
 
@@ -76,8 +95,7 @@
                     <div class="row">
                         <div class="col-xs-6 col-md-4">
                             <div class="input-group">
-                                <input type="text" class="form-control navbar-btn" placeholder="Search"
-                                    id="txtSearch" />
+                                <input type="text" class="form-control navbar-btn" placeholder="Search" id="txtSearch" />
                                 <div class="input-group-btn">
                                     <button class="btn btn-primary navbar-btn" type="submit">
                                         <span class="glyphicon glyphicon-search"></span>
@@ -115,7 +133,7 @@
     </main>
     <footer class="footer airforce dark-5">
         <marquee>
-            Copyright © 2021 - Example                
+            Copyright © 2021 - Example
             <img src="../assets/logo.png" height="30px" width="30px">
         </marquee>
     </footer>

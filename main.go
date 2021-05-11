@@ -20,9 +20,11 @@ func main() {
 }
 
 type PageData struct {
-	Image   []string
-	Name    []string
-	Members []string
+	Image        []string
+	Name         []string
+	Members      [][]string
+	CreationDate []string
+	FirstAlbum   []string
 }
 
 func hom(w http.ResponseWriter, r *http.Request) {
@@ -30,7 +32,9 @@ func hom(w http.ResponseWriter, r *http.Request) {
 	Artists := model.LoadData()
 	TooPrint := make([]string, 0)
 	TooPrintName := make([]string, 0)
-	TooPrintMembers := make([]string, 0)
+	TooPrintMembers := make([][]string, 0)
+	TooPrintCreationDate := make([]string, 0)
+	TooPrintFirstAlbum := make([]string, 0)
 	tpl := template.Must(template.ParseFiles("mygptrack/Select.html"))
 	TooPrintName = append(TooPrintName, " a")
 	for i := range Artists {
@@ -39,15 +43,27 @@ func hom(w http.ResponseWriter, r *http.Request) {
 		//Name
 		TooPrintName = append(TooPrintName, Artists[i].Name)
 		TooPrintName = append(TooPrintName, "a")
+
 		//Members
-		// TooPrintMembers = append(TooPrintMembers, Artists[i].Members)
+		TooPrintMembers = append(TooPrintMembers, Artists[i].Members)
+
+		//Creation Date
+		TooPrintCreationDate = append(TooPrintCreationDate, Artists[i].CreationDate)
+
+		//FirstAlbum
+		TooPrintFirstAlbum = append(TooPrintFirstAlbum, Artists[i].FirstAlbum)
+		//Print Test
+		// fmt.Printf("\n")
+		// fmt.Printf("%v", TooPrintMembers)
 	}
 	TooPrintName = append(TooPrintName, " ")
 
 	data := PageData{
-		Image:   TooPrint,
-		Name:    TooPrintName,
-		Members: TooPrintMembers,
+		Image:        TooPrint,
+		Name:         TooPrintName,
+		Members:      TooPrintMembers,
+		CreationDate: TooPrintCreationDate,
+		FirstAlbum:   TooPrintFirstAlbum,
 	}
 	err := tpl.Execute(w, data)
 	if err != nil {
