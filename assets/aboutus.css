@@ -1,0 +1,18 @@
+
+body {
+    /* overflow-y: hidden; Hide vertical scrollbar */
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+
+#txtSearch{
+    width: 20vw;
+}
+
+.navbar-link{
+    /* margin-top: 1%; */
+    margin-right: 5%;
+    height: fit-content;
+}
+.btn{
+    background-color: dodgerblue !important;
+}
