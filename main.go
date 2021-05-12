@@ -53,7 +53,7 @@ func hom(w http.ResponseWriter, r *http.Request) {
 		TooPrintFirstAlbum = append(TooPrintFirstAlbum, Artists[i].FirstAlbum)
 		//Print Test
 		// fmt.Printf("\n")
-		fmt.Printf("%v\n", Artists[i].Name)
+		// fmt.Printf("%v\n", Artists[i].Name)
 		// fmt.Printf("%v", Artists[0].Relation.Date[i])
 		// Artists[0].Relation.Date[i]      // 12
 		// Artists[0].Relation.Locations[i] // Paris

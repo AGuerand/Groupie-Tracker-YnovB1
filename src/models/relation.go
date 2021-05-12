@@ -1,7 +1,6 @@
 package model
 
 import (
-	"fmt"
 	"regexp"
 )
 
@@ -57,9 +56,9 @@ func Get_RelationData(Data []string, Artists []ArtistsData) []ArtistsData {
 		// dates = dates[:0]
 		// fmt.Println(Artists[Artists_index].Relation) // valide ???
 	}
-	for i := range Artists {
-		fmt.Printf("%v\n", Artists[i].Relation)
-		fmt.Println()
-	}
+	// for i := range Artists {
+	// 	fmt.Printf("%v\n", Artists[i].Relation)
+	// 	fmt.Println()
+	// }
 	return Artists
 }
