@@ -8,19 +8,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/axentix@1.2.1/dist/css/axentix.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script type="text/javascript" src="../assets/script.js"></script>
-    <script>
+    <script type="text/javascript">
         function create() {
             var golangVar = "{{.Image}}";
-
-
-
             var NameInfo = "{{.Name}}";
             var MembersInfo = "{{.Members}}"
             var CreationDate = "{{.CreationDate}}"
             var First = "{{.FirstAlbum}}"
 
-            console.log(MembersInfo);
+            MembersInfo = MembersInfo.slice(2, -3);
+            NameInfo = NameInfo.slice(1, -2);
+            console.log(NameInfo);
 
             const DateSplit = /\d{4}/g;
             const FirstSplit = /\d{2}\W\d{2}\W\d{4}/g;
@@ -29,10 +27,11 @@
             var DateReg = CreationDate.match(DateSplit)
             var FirstReg = First.match(FirstSplit)
             var img = golangVar.match(normal);
-            var MembersReg = MembersInfo.split('] [')
-            var test = NameInfo.split(' a ')
+            var MembersReg = MembersInfo.split(/,\]\s\[/)
+                // /(?<=[[).(?=,]])/
+            var test = NameInfo.split(',')
 
-            console.log(MembersReg);
+            console.log(test);
 
             for (i = 0; i <= 51; i++) {
                 var div1 = document.createElement('div');
@@ -48,7 +47,7 @@
                 divimage.setAttribute('alt', 'Music')
 
                 var div3 = document.createElement('div');
-                var txt3 = document.createTextNode(test[i + 1])
+                var txt3 = document.createTextNode(test[i])
                 div3.setAttribute('class', 'card-header')
                 div3.appendChild(txt3)
 

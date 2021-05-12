@@ -5,7 +5,7 @@ import (
 	"regexp"
 )
 
-func Get_RelationData(Data []string, Artists []ArtistsData) []ArtistsData {
+func Get_RelationData(Data []string, Artists []ArtistsData) []string {
 	var regex_locations = regexp.MustCompile(`"([^\]][\D+]+)":\["\d{2}-\d{2}-\d{4}"`)
 	var regex_dates = regexp.MustCompile(`"(\d{2}-\d{2}-\d{4})"`)
 	LastIndex := 0

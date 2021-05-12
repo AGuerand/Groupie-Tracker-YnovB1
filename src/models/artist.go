@@ -11,8 +11,8 @@ func Get_ArtitsData(Data []string, Artists []ArtistsData) []ArtistsData {
 
 	for _, element := range Data {
 		Artists = append(Artists, ArtistsData{RelationData{},
-			regex_image.FindString(element),           // + "," pour les images !!!!
-			regex_name.FindStringSubmatch(element)[1], // + "," pour les noms !!!!
+			regex_image.FindString(element),                 // + "," pour les images !!!!
+			regex_name.FindStringSubmatch(element)[1] + ",", // + "," pour les noms !!!!
 			getMembers(regex_members_list.FindStringSubmatch(element)[1]),
 			regex_creationDate.FindString(element),
 			regex_firstAlbum.FindString(element),

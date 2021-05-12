@@ -37,13 +37,11 @@ func hom(w http.ResponseWriter, r *http.Request) {
 	TooPrintFirstAlbum := make([]string, 0)
 
 	tpl := template.Must(template.ParseFiles("mygptrack/Select.html"))
-	TooPrintName = append(TooPrintName, " a")
 	for i := range Artists {
 		//Image
 		TooPrint = append(TooPrint, Artists[i].Image)
 		//Name
 		TooPrintName = append(TooPrintName, Artists[i].Name)
-		TooPrintName = append(TooPrintName, "a")
 
 		//Members
 		TooPrintMembers = append(TooPrintMembers, Artists[i].Members)
@@ -55,12 +53,11 @@ func hom(w http.ResponseWriter, r *http.Request) {
 		TooPrintFirstAlbum = append(TooPrintFirstAlbum, Artists[i].FirstAlbum)
 		//Print Test
 		// fmt.Printf("\n")
-		fmt.Printf("%v\n", Artists[i].Members)
+		fmt.Printf("%v\n", Artists[i].Name)
 		// fmt.Printf("%v", Artists[0].Relation.Date[i])
 		// Artists[0].Relation.Date[i]      // 12
 		// Artists[0].Relation.Locations[i] // Paris
 	}
-	TooPrintName = append(TooPrintName, " ")
 
 	data := PageData{
 		Image:        TooPrint,
