@@ -2,6 +2,7 @@ package model
 
 import "regexp"
 
+// recupere les lieus des concerts
 func Get_LocationsData(Data []string, Artists []ArtistsData) []ArtistsData {
 	var regex_locations = regexp.MustCompile(`"locations":\[(.+)\],"dates"`)
 

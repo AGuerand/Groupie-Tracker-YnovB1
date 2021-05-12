@@ -23,8 +23,10 @@ type ArtistsData struct {
 	Dates        string
 }
 
+// Fonction principale appeler dans le main.go
 func LoadData() []ArtistsData {
 	Artists := make([]ArtistsData, 0)
+	//Get data from API
 	APIData := [4]string{
 		"https://groupietrackers.herokuapp.com/api/artists",
 		"https://groupietrackers.herokuapp.com/api/locations",
@@ -42,13 +44,13 @@ func LoadData() []ArtistsData {
 			result := regex_bracket.FindAllString(string(data), -1)
 			switch index {
 			case 0:
-				Artists = Get_ArtitsData(result, Artists)
+				Artists = Get_ArtitsData(result, Artists) //recupere Artist Data => nom, images, membres, date de création et first album
 			case 1:
-				Artists = Get_LocationsData(result, Artists)
+				Artists = Get_LocationsData(result, Artists) // recupere les lieus des concerts
 			case 2:
-				Artists = Get_DatesData(result, Artists)
+				Artists = Get_DatesData(result, Artists) //recupere les dates des concerts
 			case 3:
-				Artists = Get_RelationData(result, Artists)
+				Artists = Get_RelationData(result, Artists) //recupere les relations =>date + location
 			}
 		}
 	}

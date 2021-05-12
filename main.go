@@ -59,6 +59,7 @@ func hom(w http.ResponseWriter, r *http.Request) {
 		// Artists[0].Relation.Locations[i] // Paris
 	}
 
+	// Data a envoyer a la page html / js
 	data := PageData{
 		Image:        TooPrint,
 		Name:         TooPrintName,
@@ -66,6 +67,7 @@ func hom(w http.ResponseWriter, r *http.Request) {
 		CreationDate: TooPrintCreationDate,
 		FirstAlbum:   TooPrintFirstAlbum,
 	}
+	// lance la page html et envoie data
 	err := tpl.Execute(w, data)
 	if err != nil {
 		log.Fatal(err)
@@ -73,6 +75,7 @@ func hom(w http.ResponseWriter, r *http.Request) {
 
 }
 
+// test function for debug/implementation usage
 func test(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("HOM")
 	Artists := model.LoadData()
