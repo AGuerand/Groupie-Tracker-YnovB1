@@ -13,7 +13,7 @@ type RelationData struct {
 }
 
 type ArtistsData struct {
-	Relation     RelationData
+	Relation     []string //RelationData
 	Image        string
 	Name         string
 	Members      []string
