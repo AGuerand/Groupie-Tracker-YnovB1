@@ -11,7 +11,8 @@ import (
 func main() {
 
 	http.HandleFunc("/", hom)
-	http.HandleFunc("/test", test)                                                             // the func redirect to the hom function when we go to localhost:6082/                                                       // the func redirect to the read function when	we go to localhost:6082/read
+	http.HandleFunc("/test", test)
+	http.HandleFunc("/index", artistPage)                                                      // the func redirect to the hom function when we go to localhost:6082/                                                       // the func redirect to the read function when	we go to localhost:6082/read
 	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("assets")))) // we handle /assets/ in our localhost
 	fmt.Printf("Starting server at port 6085\n")
 	if err := http.ListenAndServe(":6085", nil); err != nil { // we open the serve and we have and we have an error handling
@@ -25,6 +26,7 @@ type PageData struct {
 	Members      [][]string
 	CreationDate []string
 	FirstAlbum   []string
+	Relation     [][]string
 }
 
 func hom(w http.ResponseWriter, r *http.Request) {
@@ -51,6 +53,7 @@ func hom(w http.ResponseWriter, r *http.Request) {
 
 		//FirstAlbum
 		TooPrintFirstAlbum = append(TooPrintFirstAlbum, Artists[i].FirstAlbum)
+
 		//Print Test
 		// fmt.Printf("\n")
 		// fmt.Printf("%v\n", Artists[i].Name)
@@ -66,6 +69,60 @@ func hom(w http.ResponseWriter, r *http.Request) {
 		Members:      TooPrintMembers,
 		CreationDate: TooPrintCreationDate,
 		FirstAlbum:   TooPrintFirstAlbum,
+	}
+	// lance la page html et envoie data
+	err := tpl.Execute(w, data)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+}
+
+func artistPage(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("ArtistPage")
+	Artists := model.LoadData()
+	TooPrint := make([]string, 0)
+	TooPrintName := make([]string, 0)
+	TooPrintMembers := make([][]string, 0)
+	TooPrintCreationDate := make([]string, 0)
+	TooPrintFirstAlbum := make([]string, 0)
+	TooPrintRelation := make([][]string, 0)
+
+	tpl := template.Must(template.ParseFiles("mygptrack/index.html"))
+	for i := range Artists {
+		//Image
+		TooPrint = append(TooPrint, Artists[i].Image)
+		//Name
+		TooPrintName = append(TooPrintName, Artists[i].Name)
+
+		//Members
+		TooPrintMembers = append(TooPrintMembers, Artists[i].Members)
+
+		//Creation Date
+		TooPrintCreationDate = append(TooPrintCreationDate, Artists[i].CreationDate)
+
+		//FirstAlbum
+		TooPrintFirstAlbum = append(TooPrintFirstAlbum, Artists[i].FirstAlbum)
+
+		//Relation
+		TooPrintRelation = append(TooPrintRelation, Artists[i].Relation)
+
+		//Print Test
+		// fmt.Printf("\n")
+		// fmt.Printf("%v\n", Artists[i].Relation)
+		// fmt.Printf("%v", Artists[0].Relation.Date[i])
+		// Artists[0].Relation.Date[i]      // 12
+		// Artists[0].Relation.Locations[i] // Paris
+	}
+
+	// Data a envoyer a la page html / js
+	data := PageData{
+		Image:        TooPrint,
+		Name:         TooPrintName,
+		Members:      TooPrintMembers,
+		CreationDate: TooPrintCreationDate,
+		FirstAlbum:   TooPrintFirstAlbum,
+		Relation:     TooPrintRelation,
 	}
 	// lance la page html et envoie data
 	err := tpl.Execute(w, data)
