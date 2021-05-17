@@ -36,8 +36,6 @@
             var First = "{{.FirstAlbum}}"
             var relation = "{{.Relation}}"
 
-            console.log(relation)
-
             // On enlève les crochets inutile au début et a la fin du string
             MembersInfo = MembersInfo.slice(2, -3);
             NameInfo = NameInfo.slice(1, -2);
@@ -55,6 +53,12 @@
             var MembersReg = MembersInfo.split(/,\]\s\[/)
             var naimu = NameInfo.split(',')
             var dateLocation = relation.split(/\]\s\[,/)
+
+            // for (i = 0 ; i < 51 ; i++) {
+            //     for (let ele = 0 ; ele < length.dateLocation[i] ; i++) {
+            //         dateLocation = dateLocation.replace(',', "\n");
+            //     }
+            // }
 
             console.log(dateLocation)
 
