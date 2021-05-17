@@ -38,53 +38,55 @@
             var img = golangVar.match(normal);
             var MembersReg = MembersInfo.split(/,\]\s\[/)
             var naimu = NameInfo.split(',')
-            
-            
+
+
             // Boucle qui va rajouter des div pour chaques artist
             for (i = 0; i <= 51; i++) {
-                
+
                 // La carte de l'artiste
                 var div1 = document.createElement('div');
                 div1.setAttribute('class', 'card airforce light-1 shadow-1 dropshadow-5')
                 div1.id = i;
-                div1.onclick = function () {redirect(this.id); }
-                
+                div1.onclick = function() {
+                    redirect(this.id);
+                }
+
                 // Le cadre de la photo
                 var div2 = document.createElement('div');
                 div2.setAttribute('class', 'card-image')
-                
+
                 // La photo du groupe
                 var divimage = document.createElement('img');
                 divimage.setAttribute('class', 'img-responsive')
                 divimage.setAttribute('id', 'img')
                 divimage.setAttribute('src', img[i])
                 divimage.setAttribute('alt', 'Music')
-                
+
                 // nom du groupe
                 var div3 = document.createElement('div');
                 var txt3 = document.createTextNode(naimu[i])
                 div3.setAttribute('class', 'card-header')
                 div3.appendChild(txt3)
-                
+
                 // member list
                 var div4 = document.createElement('div');
                 var txt4 = document.createTextNode(MembersReg[i])
                 div4.setAttribute('class', 'card-content')
                 div4.appendChild(txt4)
-                
+
                 // date de création
                 var div5 = document.createElement('div');
                 var txt5 = document.createTextNode("CreationDate: " + DateReg[i])
                 div5.setAttribute('class', 'card-content')
                 div5.appendChild(txt5)
                 var parent = document.getElementById("start")
-                
+
                 // first album
                 var div6 = document.createElement('div');
                 var txt6 = document.createTextNode(("FirstAlbum: " + FirstReg[i]))
                 div6.setAttribute('class', 'card-footer')
                 div6.appendChild(txt6)
-                
+
                 // On assemble les divs
                 document.body.appendChild(div1);
                 parent.appendChild(div1)
@@ -97,13 +99,13 @@
             }
 
         }
-        
-        function redirect(id){
-            window.location.href='/index?'+String(id);
+
+        function redirect(id) {
+            window.location.href = '/index?' + String(id);
             // /aboutus.html?' + String(id);
         }
 
-        
+
         function searchCreate(i) {
             // On récupere les infos de Go (en string)
             var golangVar = "{{.Image}}";
@@ -127,41 +129,45 @@
             var img = golangVar.match(normal);
             var MembersReg = MembersInfo.split(/,\]\s\[/)
             var naimu = NameInfo.split(',')
-            // Boucle qui va rajouter des div pour chaques artist
-            // La carte de l'artiste
+                // Boucle qui va rajouter des div pour chaques artist
+                // La carte de l'artiste
             var div1 = document.createElement('div');
             div1.setAttribute('class', 'card airforce light-1 shadow-1 dropshadow-5')
-            // Le cadre de la photo
+            div1.id = i;
+            div1.onclick = function() {
+                    redirect(this.id);
+                }
+                // Le cadre de la photo
             var div2 = document.createElement('div');
             div2.setAttribute('class', 'card-image')
-            // La photo du groupe
+                // La photo du groupe
             var divimage = document.createElement('img');
             divimage.setAttribute('class', 'img-responsive')
             divimage.setAttribute('id', 'img')
             divimage.setAttribute('src', img[i])
             divimage.setAttribute('alt', 'Music')
-            // nom du groupe
+                // nom du groupe
             var div3 = document.createElement('div');
             var txt3 = document.createTextNode(naimu[i])
             div3.setAttribute('class', 'card-header')
             div3.appendChild(txt3)
-            // member list
+                // member list
             var div4 = document.createElement('div');
             var txt4 = document.createTextNode(MembersReg[i])
             div4.setAttribute('class', 'card-content')
             div4.appendChild(txt4)
-            // date de création
+                // date de création
             var div5 = document.createElement('div');
             var txt5 = document.createTextNode("CreationDate: " + DateReg[i])
             div5.setAttribute('class', 'card-content')
             div5.appendChild(txt5)
             var parent = document.getElementById("start")
-            // first album
+                // first album
             var div6 = document.createElement('div');
             var txt6 = document.createTextNode(("FirstAlbum: " + FirstReg[i]))
             div6.setAttribute('class', 'card-footer')
             div6.appendChild(txt6)
-            // On assemble les divs
+                // On assemble les divs
             document.body.appendChild(div1);
             parent.appendChild(div1)
             div1.appendChild(div2)
@@ -170,11 +176,11 @@
             div1.appendChild(div5)
             div1.appendChild(div6)
             div2.appendChild(divimage)
-            
+
         }
 
 
-        function searchs(){
+        function searchs() {
             var NameInfo = "{{.Name}}";
             var MembersInfo = "{{.Members}}"
             var CreationDate = "{{.CreationDate}}"
@@ -183,7 +189,7 @@
             // On enlève les crochets inutile au début et a la fin du string
             MembersInfo = MembersInfo.slice(2, -3);
             NameInfo = NameInfo.slice(1, -2)
-            // On sépare les informations
+                // On sépare les informations
             const DateSplit = /\d{4}/g;
             const FirstSplit = /\d{2}\W\d{2}\W\d{4}/g;
             // On place les informations dans des tableaux
@@ -192,7 +198,7 @@
             var MembersReg = MembersInfo.split(/,\]\s\[/)
             var naimu = NameInfo.split(',')
 
-            
+
             deletes()
 
             var searchTerm = []
@@ -208,19 +214,19 @@
                 var inclfirst = FirstReg[i].includes(searchTerm)
                 var inclmember = MembersReg[i].includes(searchTerm)
 
-                if (inclname == true){
+                if (inclname == true) {
                     searchCreate(i)
-                }else if (incldate == true){
+                } else if (incldate == true) {
                     searchCreate(i)
-                }else if (inclfirst == true){
+                } else if (inclfirst == true) {
                     searchCreate(i)
-                }else if (inclmember == true){
+                } else if (inclmember == true) {
                     searchCreate(i)
                 }
             }
         }
     </script>
-    
+
 
 
 </head>
@@ -233,14 +239,14 @@
             <div class="navbar-menu ml-auto">
                 <!-- <a class="navbar-link" href="/Select">Select</a> -->
                 <a class="navbar-link" href="#" id="us">Us</a>
-                <form action="/hms/accommodations" method="GET">
+                <form action="/hms/accommodations" method="GET" onSubmit="return false">
                     <div class="row">
                         <div class="col-xs-6 col-md-4">
                             <div class="input-group">
-                                <input type="search" class="form-control navbar-btn" placeholder="Search"
-                                    id="txtSearch" /> <!-- onkeyup="searchArtists()" />  -->
+                                <input type="search" class="form-control navbar-btn" placeholder="Search" id="txtSearch" />
+                                <!-- onkeyup="searchArtists()" />  -->
                                 <div class="input-group-btn">
-                                    <button type='button' onclick="searchs()" class="btn btn-primary navbar-btn" id="searchbtn">
+                                    <button type='search' onclick="searchs()" class="btn btn-primary navbar-btn" id="searchbtn">
                                         <span class="glyphicon glyphicon-search"></span>
                                     </button>
                                 </div>
