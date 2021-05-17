@@ -1,4 +1,43 @@
+<!DOCTYPE html>
 <html>
+    <head>
+        <title>mark.js</title>
+        <meta name="generator" content="editplus"/>
+        <style type="text/css">
+        mark {
+            background: orange;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <input type="search">
+    <div id="context">
+       
+        <p>Tout entreprise commerciale doit fournir un extrait K ou Kbis dans ses démarches administratives. Ce document lui permet de justifier son inscription au registre du commerce et des sociétés (RCS) et de prouver son existence légale. L'extrait K ou Kbis peut être obtenu en ligne de façon gratuite par le dirigeant de l'entreprise ou de façon payante auprès du tribunal de commerce. L'extrait K ou Kbis est public, il peut donc être demandé par toute personne faisant une recherche sur une entreprise.</p>
+        
+    </div>
+    <script src="http://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.es6.js"></script>
+    <script type="text/javascript">
+    $(function () {
+        $("input").on("input.highlight", function () {
+            // Determine specified search term
+            var searchTerm = $(this).val();
+            // Highlight search term inside a specific context
+            $("#context").unmark().mark(searchTerm,
+            {
+                "acrossElements": true,
+                "separateWordSearch": false,
+            }
+            );
+        }).trigger("input.highlight").focus();
+    });
+</script>
+</body>
+</html>
+
+<!-- <html>
 
 <head>
 </head>
@@ -36,4 +75,4 @@
 
 </body>
 
-</html>
+</html> -->
