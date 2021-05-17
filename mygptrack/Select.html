@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/axentix@1.2.1/dist/css/axentix.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
-    
-    <script type="text/javascript">
+
+    <script type="text/javascript" id="testtt">
         // JS qui permet l'affichage de nos info sur le server
         function create() {
             // On récupere les infos de Go (en string)
@@ -91,7 +91,8 @@
             }
         }
     </script>
-    
+
+
 </head>
 
 <body class="layout airforce dark-4 with-sidenav fixed-sidenav">
@@ -106,8 +107,8 @@
                     <div class="row">
                         <div class="col-xs-6 col-md-4">
                             <div class="input-group">
-                                <input type="text" class="form-control navbar-btn" placeholder="Search"
-                                    id="txtSearch" />
+                                <input type="search" class="form-control navbar-btn" placeholder="Search"
+                                    id="txtSearch" /> <!-- onkeyup="searchArtists()" />  -->
                                 <div class="input-group-btn">
                                     <button class="btn btn-primary navbar-btn" type="submit">
                                         <span class="glyphicon glyphicon-search"></span>
@@ -122,21 +123,21 @@
     </header>
 
     <div id="example-sidenav" data-ax="sidenav" class="sidenav shadow-1 large fixed airforce dark-5">
-        <marquee behavior="alternate">   
-            <div class="sidenav-header">
-                <button data-target="example-sidenav" class="sidenav-trigger"><i class="fas fa-times"></i></button>
-                <img class="sidenav-logo" src="../assets/logo.png" alt="Logo" id="logoside" />
-                <!-- <img class="sidenav-logo dropshadow-1" src="logo.png" alt="Logo" /> -->
-            </div>
-            <a onclick="deletes()" class="sidenav-link active">Filter 1</a>
-            <a onclick="create()" class="sidenav-link">Filter 2</a>
-            <a href="#" class="sidenav-link">Filter 3</a>
-            <a href="#" class="sidenav-link">Filter 4</a>
-        </marquee>
+
+        <div class="sidenav-header">
+            <button data-target="example-sidenav" class="sidenav-trigger"><i class="fas fa-times"></i></button>
+            <img class="sidenav-logo" src="../assets/logo.png" alt="Logo" id="logoside" />
+            <!-- <img class="sidenav-logo dropshadow-1" src="logo.png" alt="Logo" /> -->
         </div>
+        <a onclick="deletes()" class="sidenav-link active">Filter 1</a>
+        <a onclick="create()" class="sidenav-link">Filter 2</a>
+        <a href="#" class="sidenav-link">Filter 3</a>
+        <a href="#" class="sidenav-link">Filter 4</a>
+
+    </div>
 
     <main>
-        <marquee direction="down" behavior="alternate" style="border:solid">
+
         <!-- Code here the main content -->
         <button data-target="example-sidenav" class="btn rounded-1 press amaranth dark-1 sidenav-trigger hide-md-up">
             Open sidenav
@@ -145,7 +146,9 @@
             <script type="text/javascript">
                 create();
             </script>
-        </marquee>
+        </div>
+
+
     </main>
     <script src="https://cdn.jsdelivr.net/npm/axentix@1.2.1/dist/js/axentix.min.js"></script>
     <footer class="footer airforce dark-5">
@@ -153,8 +156,16 @@
             Copyright © 2021 - Example
             <img src="../assets/logo.png" height="30px" width="30px">
         </marquee>
-    </marquee>
+
     </footer>
+    <!-- <script>
+        function searchArtists() {
+            var x = document.getElementById("start");
+            console.log(x.textContent);
+
+
+        }
+    </script> -->
 </body>
 
 </html>
