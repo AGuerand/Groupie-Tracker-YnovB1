@@ -4,17 +4,17 @@
 <head>
     <title>Axentix Layout - Fixed sidenav</title>
     <meta charset="utf-8">
-    <link type="text/css" href="../assets/Select.css" rel="stylesheet">
+    <link type="text/css" href="../assets/style.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/axentix@1.2.1/dist/css/axentix.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
 
     <script type="text/javascript" id="testtt">
-            function getParameters() {
-            var urlcourante = document.location.href;
-            var urlcourante = urlcourante.replace(/\/$/, "");
-            // Gardons dans la variable queue_url uniquement la portion derrière le dernier slash de urlcourante
+        function getParameters() {
+            let urlcourante = document.location.href;
+            urlcourante = urlcourante.replace(/\/$/, "");
+            // Gardons dans la letiable queue_url uniquement la portion derrière le dernier slash de urlcourante
             queue_url = urlcourante.substring(urlcourante.lastIndexOf("/") + 1);
             let reg = /(?<=\?).*/g;
             return queue_url.match(reg)[0]
@@ -24,17 +24,17 @@
 
         // JS qui permet l'affichage de nos info sur le server
         function create() {
-            var id = getParameters();
-            if (id > 51 || id < 0){
+            let id = getParameters();
+            if (id > 51 || id < 0) {
                 id = 0
             }
             // On récupere les infos de Go (en string)
-            var golangVar = "{{.Image}}";
-            var NameInfo = "{{.Name}}";
-            var MembersInfo = "{{.Members}}"
-            var CreationDate = "{{.CreationDate}}"
-            var First = "{{.FirstAlbum}}"
-            var relation = "{{.Relation}}"
+            let golanglet = "{{.Image}}";
+            let NameInfo = "{{.Name}}";
+            let MembersInfo = "{{.Members}}"
+            let CreationDate = "{{.CreationDate}}"
+            let First = "{{.FirstAlbum}}"
+            let relation = "{{.Relation}}"
 
             // On enlève les crochets inutile au début et a la fin du string
             MembersInfo = MembersInfo.slice(2, -3);
@@ -47,102 +47,90 @@
             const normal = /https:\/\/groupietrackers.herokuapp.com\/api\/images\/\w*.jpeg/g;
 
             // On place les informations dans des tableaux
-            var DateReg = CreationDate.match(DateSplit)
-            var FirstReg = First.match(FirstSplit)
-            var img = golangVar.match(normal);
-            var MembersReg = MembersInfo.split(/,\]\s\[/)
-            var naimu = NameInfo.split(',')
-            var dateLocation = relation.split(/\]\s\[,/)
+            let DateReg = CreationDate.match(DateSplit)
+            let FirstReg = First.match(FirstSplit)
+            let img = golanglet.match(normal);
+            let MembersReg = MembersInfo.split(/,\]\s\[/)
+            let naimu = NameInfo.split(',')
+            let dateLocation = relation.split(/\]\s\[/)
 
-            // for (i = 0 ; i < 51 ; i++) {
-            //     for (let ele = 0 ; ele < length.dateLocation[i] ; i++) {
-            //         dateLocation = dateLocation.replace(',', "\n");
-            //     }
-            // }
+            let LieuDatePourToi = dateLocation[id]
+            let LieuDatePourMoi = dateLocation[id]
 
-            console.log(dateLocation)
+            // Date[0] = "", donc commencé a index 1 pour avoir les dates.
+            let regDate = /,[\w*\-\w*]*,/g;
+            let Date = LieuDatePourToi.split(regDate);
+            let Lieu = LieuDatePourMoi.split(/,[\d{2}\W\d{2}\W\d{4}]*/);
+
+            console.log(LieuDatePourToi);
+            console.log(Date);
 
             // La carte de l'artiste
-            var div1 = document.createElement('div');
-            div1.setAttribute('class', 'card airforce light-1 shadow-1 dropshadow-5')
+            let div1 = document.createElement('div');
+            // div1.setAttribute('class', 'card airforce light-1 shadow-1 dropshadow-5')
 
             // Le cadre de la photo
-            var div2 = document.createElement('div');
-            div2.setAttribute('class', 'card-image')
+            let div2 = document.createElement('div');
+            // div2.setAttribute('class', 'card-image')
 
             // La photo du groupe
-            var divimage = document.createElement('img');
-            divimage.setAttribute('class', 'img-responsive')
+            let divimage = document.createElement('img');
+            divimage.setAttribute('class', 'imageIndexBigFatStyle')
             divimage.setAttribute('id', 'img')
             divimage.setAttribute('src', img[id])
             divimage.setAttribute('alt', 'Music')
 
             // nom du groupe
-            var div3 = document.createElement('div');
-            var txt3 = document.createTextNode(naimu[id])
-            div3.setAttribute('class', 'card-header')
+            let div3 = document.createElement('div');
+            let txt3 = document.createTextNode(naimu[id])
+            div3.setAttribute('class', 'ArtistBigFatNaMu')
             div3.appendChild(txt3)
 
-            // member list
-            var div4 = document.createElement('div');
-            var txt4 = document.createTextNode(MembersReg[id])
-            div4.setAttribute('class', 'card-content')
-            div4.appendChild(txt4)
 
-            // date de création
-            var div5 = document.createElement('div');
-            var txt5 = document.createTextNode("CreationDate: " + DateReg[id])
-            div5.setAttribute('class', 'card-content')
-            div5.appendChild(txt5)
-            var parent = document.getElementById("start")
 
-            // first album
-            var div6 = document.createElement('div');
-            var txt6 = document.createTextNode(("FirstAlbum: " + FirstReg[id]))
-            div6.setAttribute('class', 'card-footer')
-            div6.appendChild(txt6)
+            let parent = document.getElementById("start")
 
-            var div7 = document.createElement('div');
-            var txt7 = document.createTextNode(("Concert: " + dateLocation[id]))
-            div7.setAttribute('class', 'card-footer')
+            let div7 = document.createElement('div');
+            let txt7 = document.createTextNode(("Concert : "));
             div7.appendChild(txt7)
+            div7.setAttribute('class', 'concertPart')
+            
+            let div8 = document.createElement('div');
+            div8.setAttribute('class', 'concertInfos')
+                for (i = 0; i <= Date.length -2; i++) {
+                    let divnul = document.createElement('div');
+                    let txt8 = document.createTextNode((Lieu[i+1]  + "\t"+ Date[i+1] + "\n"))
+                    divnul.appendChild(txt8)
+                    div8.appendChild(divnul)
+                }
+
 
             // On assemble les divs
             document.body.appendChild(div1);
             parent.appendChild(div1)
-            div1.appendChild(div2)
             div1.appendChild(div3)
-            div1.appendChild(div4)
-            div1.appendChild(div5)
-            div1.appendChild(div6)
+            div1.appendChild(div2)
             div1.appendChild(div7)
+            div1.appendChild(div8)
+            // ici
             div2.appendChild(divimage)
         }
-
-
-
-
-
-
     </script>
 </head>
 
-<body class="layout airforce dark-4 with-sidenav fixed-sidenav">
+<body class="layout airforce dark-4">
     <header>
         <nav class="navbar airforce dark-5">
-            <!-- <a href="./index.html" target="_blank" class="navbar-brand">Groupie Tracker</a> -->
-            <a href="/" class="navbar-brand ml-0.5">Groupie Tracker</a>
+            <a href="./index.html" class="navbar-brand ml-0.5">Groupie Tracker</a>
             <div class="navbar-menu ml-auto">
-                <!-- <a class="navbar-link" href="/Select">Select</a> -->
                 <a class="navbar-link" href="#" id="us">Us</a>
                 <form action="/hms/accommodations" method="GET">
                     <div class="row">
                         <div class="col-xs-6 col-md-4">
                             <div class="input-group">
-                                <input type="search" class="form-control navbar-btn" placeholder="Search"
-                                    id="txtSearch" /> <!-- onkeyup="searchArtists()" />  -->
+                                <input type="text" class="form-control" placeholder="Search" id="txtSearch" />
                                 <div class="input-group-btn">
-                                    <button class="btn btn-primary navbar-btn" type="submit">
+                                    <button class="btn btn-primary" type="submit">
                                         <span class="glyphicon glyphicon-search"></span>
                                     </button>
                                 </div>
@@ -165,18 +153,14 @@
     <footer class="footer airforce dark-5">
         <marquee>
             Copyright © 2021 - Example
-            <img src="../assets/logo.png" height="30px" width="30px">
+            <img src="../assets/logo.png" height="30px" width="30px"> INFORMATION CORONAVIRUS, COVID-19. PROTÉGEONS-NOUS LES UNS LES AUTRES. Se laver régulièrement les mains ou utiliser une solution hydroalcoolique, Tousser ou éternuer dans son coude
+            ou dans un mouchoir, Se moucher dans un mouchoir à usage unique, Portez un masque chirurgical ou en tissu de catégorie 1 quand la distance de deux mètres ne peut pas être respectée, Respecter une distance d’au moins deux mètres avec les autres,
+            Limiter au maximum ses contacts sociaux (6 maximum), Eviter de se toucher le visage, Aérer les pièces le plus souvent possible, au minimum quelques minutes toutes les heures, visiter cette page : https://github.com/FeutreEnBois, Saluer sans
+            serrer la main et arrêter les embrassades, Utiliser les outils numériques (TousAntiCovid). Pour plus d'informations retrouver nous sur le site internet ou appeler au numero suivants: https://www.gouvernement.fr/info-coronavirus / 0 800 130
+            000 (appel gratuit)
         </marquee>
 
     </footer>
-    <!-- <script>
-        function searchArtists() {
-            var x = document.getElementById("start");
-            console.log(x.textContent);
-
-
-        }
-    </script> -->
 </body>
 
 </html>

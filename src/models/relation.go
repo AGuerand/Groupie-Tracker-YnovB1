@@ -1,7 +1,6 @@
 package model
 
 import (
-	"fmt"
 	"regexp"
 )
 
@@ -24,13 +23,13 @@ func Get_RelationData(Data []string, Artists []ArtistsData) []ArtistsData {
 
 			if index == 0 {
 			} else if index == len(regex_locations.FindAllStringIndex(element, -1))-1 {
-				data += "," + regex_locations.FindStringSubmatch(element[LastIndex:indexFlag[0]])[1]
+				data += "," + regex_locations.FindStringSubmatch(element[LastIndex:indexFlag[0]])[1] + ","
 				for _, date := range regex_dates.FindAllStringSubmatch(element[LastIndex:indexFlag[0]], -1) {
 
 					data += " " + date[1]
 				}
 				// dates = append(dates, datesToSlice)
-				data += "," + regex_locations.FindStringSubmatch(element[indexFlag[0] : len(element)-1])[1]
+				data += "," + regex_locations.FindStringSubmatch(element[indexFlag[0] : len(element)-1])[1] + ","
 				for _, date := range regex_dates.FindAllStringSubmatch(element[indexFlag[0]:len(element)-1], -1) {
 
 					data += " " + date[1]
@@ -38,7 +37,7 @@ func Get_RelationData(Data []string, Artists []ArtistsData) []ArtistsData {
 				// dates = append(dates, datesToSlice)
 				// datesToSlice = ""
 			} else {
-				data += "," + regex_locations.FindStringSubmatch(element[LastIndex:indexFlag[0]])[1]
+				data += "," + regex_locations.FindStringSubmatch(element[LastIndex:indexFlag[0]])[1] + ","
 				for _, date := range regex_dates.FindAllStringSubmatch(element[LastIndex:indexFlag[0]], -1) {
 
 					data += " " + date[1]
@@ -57,9 +56,9 @@ func Get_RelationData(Data []string, Artists []ArtistsData) []ArtistsData {
 		// dates = dates[:0]
 		// fmt.Println(Artists[Artists_index].Relation) // valide ???
 	}
-	for i := range Artists {
-		fmt.Printf("%v\n", Artists[i].Relation)
-		fmt.Println()
-	}
+	// for i := range Artists {
+	// 	fmt.Printf("%v\n", Artists[i].Relation)
+	// 	fmt.Println()
+	// }
 	return Artists
 }

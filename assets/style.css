@@ -1,57 +1,117 @@
-.logo :hover{
-    filter: blur(4px) grayscale(1) brightness(30%);
-}
-body {
-    /* overflow-y: hidden; Hide vertical scrollbar */
-    overflow-x: hidden; /* Hide horizontal scrollbar */
-}
-.row{
-    margin-top: 5% !important;
-    margin-left: 1% !important;
-    margin-right: 1% !important;
-}
-.logo{
+    /* .img :hover{
+    filter: blur(4px) grayscale(1) brightness(30%) !important;
+} */
+    
+    body,
+    html {
+        height: 100%;
+    }
+    
+    body {
+        /* overflow-y: hidden; Hide vertical scrollbar */
+        overflow-x: hidden;
+        /* Hide horizontal scrollbar */
+    }
+    /* .img{
     position: relative;
     text-align: center;
-    /* filter: grayscale(0); */
-}
-.txt{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    display: none;
-}
-/* #logo{
-    height: auto;
-    width: 30%;
-    margin-left: 30%;
-    margin-top: -8%;
-    margin-right: 10% !important;
+    /* filter: grayscale(0);
 } */
-#img{
-    margin-top: 5%;
-    margin-bottom: 5%;
+    
+    #txt {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        display: none;
+    }
+    
+    #logo {
+        height: auto;
+        width: 30%;
+        margin-left: 30%;
+        margin-top: -4%;
+    }
+    /* #img{
+    height: auto;
+    width: 100%;
+    margin-left: 5%;
+    padding-right: 10%;
+    padding-top: 5%;
+} */
+    /* .card{
+    margin-left: 5% !important  ;
+    margin-right: 5% !important;
+    margin-top: 5% !important;
+    margin-bottom: 3% !important;
     border-radius: 2%;
-}
-.lorem{
-    margin-top: 2%;
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-bottom: 5%;
-    text-align: center;
-}
-#txtSearch{
-    width: 20vw;
-}
-.input-group{
-    margin-bottom: 20%;
-}
-.navbar-link{
-    margin-top: 4%;
-    height: fit-content;
-}
-.btn{
-    background-color: dodgerblue !important;
-}
+} */
+    /* #logoside{
+    height: auto;
+    width: 40%;
+} */
+    
+    .btn {
+        margin-left: 2%;
+        background-color: darkgrey !important;
+        margin-bottom: 10% !important;
+        background-color: dodgerblue !important;
+    }
+    
+    .navbar-brand {
+        margin-left: 3%;
+    }
+    
+    #txtSearch {
+        width: 20vw;
+    }
+    
+    .navbar-link {
+        margin-bottom: 1%;
+        height: fit-content;
+    }
+    
+    .container {
+        height: 94%;
+        width: 70%;
+        margin-right: 20%;
+        margin-left: 20%;
+        background-color: purple;
+    }
+    /* #img{
+    background-size:100% 100%;
+    background-image: url("../assets/logo.png");
+    background-repeat: no-repeat;
+} */
+    /* .name{
+    
+} */
+    
+    .ArtistBigFatNaMu {
+        text-align: center;
+        font-family: "Times New Roman", Times, serif;
+        font-size: 80px;
+        color: gold;
+    }
+    
+    .imageIndexBigFatStyle {
+        width: 40%;
+        height: 40%;
+        text-align: center;
+        margin: auto;
+        display: flex;
+    }
+
+    .concertPart {
+        text-align: center;
+        font-family: "Times New Roman", Times, serif;
+        font-size: 60px;
+        color: gold;
+    }
+
+    .concertInfos {
+        text-align: center;
+        font-size: 26px;
+        font-family: "Times New Roman", Times, serif;
+    }
