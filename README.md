@@ -22,4 +22,5 @@ Cliquer sur un artiste pour découvrir ces prochain concert !
 
 - bootstrap https://getbootstrap.com/
 - axentix https://useaxentix.com/
+- jQuery https://jquery.com/
 - stackOverflow https://stackoverflow.com/
