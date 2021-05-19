@@ -17,3 +17,9 @@ vous avez maintenant accès a Groupie Tracker, votre sites de banque d'images et
 Cliquer sur un artiste pour découvrir ces prochain concert !
 
 ![artist](https://user-images.githubusercontent.com/75376645/118833046-6d7c6580-b8c1-11eb-851b-ec5f9494d6c0.PNG)
+
+# source du projet
+
+- bootstrap https://getbootstrap.com/
+- axentix https://useaxentix.com/
+- stackOverflow https://stackoverflow.com/
