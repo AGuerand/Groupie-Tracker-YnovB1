@@ -1,6 +1,8 @@
 ![home](https://user-images.githubusercontent.com/75376645/118831998-820c2e00-b8c0-11eb-819f-05f3118cdf45.PNG)
 # Groupie-Tracker
 
+<span style = "color: red">**Groupie Tracker est un LE site qui vous permetra de découvrir les locations des prochains concert de vos artistes préféré** </style>*
+
 **Groupie Tracker est un LE site qui vous permetra de découvrir les locations des prochains concert de vos artistes préféré**
 
 # Comment Utiliser
