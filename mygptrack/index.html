@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Axentix Layout - Fixed sidenav</title>
+    <title>Groupie Tracker</title>
     <meta charset="utf-8">
     <link type="text/css" href="../assets/style.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,11 +10,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script type="text/javascript" src="../assets/script.js"></script>
 
-    <script type="text/javascript" id="testtt">
+    <script type="text/javascript">
         function getParameters() {
             let urlcourante = document.location.href;
             urlcourante = urlcourante.replace(/\/$/, "");
-            // Gardons dans la letiable queue_url uniquement la portion derrière le dernier slash de urlcourante
+            // load in a variable the portion behind the last slash
             queue_url = urlcourante.substring(urlcourante.lastIndexOf("/") + 1);
             let reg = /(?<=\?).*/g;
             return queue_url.match(reg)[0]
@@ -22,13 +22,13 @@
 
         console.log(getParameters())
 
-        // JS qui permet l'affichage de nos info sur le server
+        // Print all the information on the serve
         function create() {
             let id = getParameters();
             if (id > 51 || id < 0) {
                 id = 0
             }
-            // On récupere les infos de Go (en string)
+            // We get all the information from Go (in string)
             let golanglet = "{{.Image}}";
             let NameInfo = "{{.Name}}";
             let MembersInfo = "{{.Members}}"
@@ -36,18 +36,18 @@
             let First = "{{.FirstAlbum}}"
             let relation = "," + "{{.Relation}}"
 
-            // On enlève les crochets inutile au début et a la fin du string
+            // We remove unnecessary hooks at the beginning and at the end of the string
             MembersInfo = MembersInfo.slice(2, -3);
             NameInfo = NameInfo.slice(1, -2);
             relation = relation.slice(3, -3);
 
 
-            // On sépare les informations
+            // We separate the information
             const DateSplit = /\d{4}/g;
             const FirstSplit = /\d{2}\W\d{2}\W\d{4}/g;
             const normal = /https:\/\/groupietrackers.herokuapp.com\/api\/images\/\w*.jpeg/g;
 
-            // On place les informations dans des tableaux
+            // We put the information in arrays
             let DateReg = CreationDate.match(DateSplit)
             let FirstReg = First.match(FirstSplit)
             let img = golanglet.match(normal);
@@ -59,18 +59,16 @@
             let LieuDatePourToi = dateLocation[id]
             let LieuDatePourMoi = dateLocation[id]
 
-            // Date[0] = "", donc commencé a index 1 pour avoir les dates.
+            // Date [0] = "", so started at index 1 to get the dates.
             let regDate = /,[\w*\-\w*]*,/g;
             let Date = LieuDatePourToi.split(regDate);
             let Lieu = LieuDatePourMoi.split(/,[\d{2}\W\d{2}\W\d{4}]*/);
 
-            // La carte de l'artiste
+            // The artist's card
             let div1 = document.createElement('div');
-            // div1.setAttribute('class', 'card airforce light-1 shadow-1 dropshadow-5')
-
-            // Le cadre de la photo
+            // The picture frame
             let div2 = document.createElement('div');
-            // La photo du groupe
+            // The picture
             let divimage = document.createElement('img');
             divimage.setAttribute('class', 'imageIndexBigFatStyle')
             divimage.setAttribute('id', 'img')
@@ -78,7 +76,7 @@
             divimage.setAttribute('alt', 'Music')
 
 
-            // nom du groupe
+            // name of group
             let div3 = document.createElement('div');
             let txt3 = document.createTextNode(naimu[id])
             div3.setAttribute('class', 'ArtistBigFatNaMu')
@@ -114,7 +112,6 @@
             for (i = 0; i <= Date.length - 1; i++) {
                 let divnul2 = document.createElement('div');
                 divnul2.id = i
-                // divnul2.setAttribute('style', 'display: none')
                 let txt9 = document.createTextNode(Date[i])
                 divnul2.appendChild(txt9)
                 div9.appendChild(divnul2)
@@ -124,7 +121,7 @@
 
             }
 
-            // On assemble les divs
+            // We assemble the divs
             document.body.appendChild(div1);
             parent.appendChild(div1)
             div1.appendChild(div3)

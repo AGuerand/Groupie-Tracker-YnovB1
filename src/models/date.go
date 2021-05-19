@@ -2,6 +2,7 @@ package model
 
 import "regexp"
 
+// get concert date
 func Get_DatesData(Data []string, Artists []ArtistsData) []ArtistsData {
 	var regex_dates = regexp.MustCompile(`"dates":\[(.+)\]`)
 

@@ -2,12 +2,12 @@ package model
 
 import "regexp"
 
-//recupere Artist Data => nom, images, membres, date de création et first album
-func Get_ArtitsData(Data []string, Artists []ArtistsData) []ArtistsData { //Récupere :
+// Get Artisit Data
+func Get_ArtitsData(Data []string, Artists []ArtistsData) []ArtistsData {
 	var regex_image = regexp.MustCompile(`https://.+.jpeg`)                          // image
-	var regex_name = regexp.MustCompile(`"name":"(.+)","members`)                    // nom du groupe
-	var regex_members_list = regexp.MustCompile(`"members":\[(.+)\],"creationDate"`) // membredu groupes
-	var regex_creationDate = regexp.MustCompile(`\d{4}`)                             // date de création
+	var regex_name = regexp.MustCompile(`"name":"(.+)","members`)                    // name
+	var regex_members_list = regexp.MustCompile(`"members":\[(.+)\],"creationDate"`) // members
+	var regex_creationDate = regexp.MustCompile(`\d{4}`)                             // creation date
 	var regex_firstAlbum = regexp.MustCompile(`\d{2}-\d{2}-\d{4}`)                   //first album date
 
 	empty := make([]string, 0)
@@ -25,7 +25,7 @@ func Get_ArtitsData(Data []string, Artists []ArtistsData) []ArtistsData { //Réc
 	return Artists
 }
 
-// recupere le nom des membres du groupe
+// get name for each members for each group
 func getMembers(s string) []string {
 	var regex_members = regexp.MustCompile(`([^,].+)`)
 	last_index := 1

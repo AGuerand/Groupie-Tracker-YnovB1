@@ -23,7 +23,7 @@ type ArtistsData struct {
 	Dates        string
 }
 
-// Fonction principale appeler dans le main.go
+// important function, used in main.go
 func LoadData() []ArtistsData {
 	Artists := make([]ArtistsData, 0)
 	//Get data from API
@@ -44,13 +44,13 @@ func LoadData() []ArtistsData {
 			result := regex_bracket.FindAllString(string(data), -1)
 			switch index {
 			case 0:
-				Artists = Get_ArtitsData(result, Artists) //recupere Artist Data => nom, images, membres, date de création et first album
+				Artists = Get_ArtitsData(result, Artists) //get Artist Data => name, images, members, creation date ,first album
 			case 1:
-				Artists = Get_LocationsData(result, Artists) // recupere les lieus des concerts
+				Artists = Get_LocationsData(result, Artists) // get concert locations
 			case 2:
-				Artists = Get_DatesData(result, Artists) //recupere les dates des concerts
+				Artists = Get_DatesData(result, Artists) //get concert date
 			case 3:
-				Artists = Get_RelationData(result, Artists) //recupere les relations =>date + location
+				Artists = Get_RelationData(result, Artists) //get relations =>date + location
 			}
 		}
 	}

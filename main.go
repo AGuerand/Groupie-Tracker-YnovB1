@@ -54,15 +54,9 @@ func hom(w http.ResponseWriter, r *http.Request) {
 		//FirstAlbum
 		TooPrintFirstAlbum = append(TooPrintFirstAlbum, Artists[i].FirstAlbum)
 
-		//Print Test
-		// fmt.Printf("\n")
-		// fmt.Printf("%v\n", Artists[i].Name)
-		// fmt.Printf("%v", Artists[0].Relation.Date[i])
-		// Artists[0].Relation.Date[i]      // 12
-		// Artists[0].Relation.Locations[i] // Paris
 	}
 
-	// Data a envoyer a la page html / js
+	// Push data too html and js
 	data := PageData{
 		Image:        TooPrint,
 		Name:         TooPrintName,
@@ -70,7 +64,7 @@ func hom(w http.ResponseWriter, r *http.Request) {
 		CreationDate: TooPrintCreationDate,
 		FirstAlbum:   TooPrintFirstAlbum,
 	}
-	// lance la page html et envoie data
+	// load html page and give it data
 	err := tpl.Execute(w, data)
 	if err != nil {
 		log.Fatal(err)
@@ -108,15 +102,9 @@ func artistPage(w http.ResponseWriter, r *http.Request) {
 		//Relation
 		TooPrintRelation = append(TooPrintRelation, Artists[i].Relation)
 
-		//Print Test
-		// fmt.Printf("\n")
-		// fmt.Printf("%v\n", Artists[i].Relation)
-		// fmt.Printf("%v", Artists[0].Relation.Date[i])
-		// Artists[0].Relation.Date[i]      // 12
-		// Artists[0].Relation.Locations[i] // Paris
 	}
 
-	// Data a envoyer a la page html / js
+	// Push data too html and js
 	data := PageData{
 		Image:        TooPrint,
 		Name:         TooPrintName,
@@ -125,7 +113,7 @@ func artistPage(w http.ResponseWriter, r *http.Request) {
 		FirstAlbum:   TooPrintFirstAlbum,
 		Relation:     TooPrintRelation,
 	}
-	// lance la page html et envoie data
+	// load html page and give it data
 	err := tpl.Execute(w, data)
 	if err != nil {
 		log.Fatal(err)
