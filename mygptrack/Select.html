@@ -38,7 +38,7 @@
             var img = golangVar.match(normal);
             var MembersReg = MembersInfo.split(/,\]\s\[/)
             var naimu = NameInfo.split(',')
-
+            deletes()
 
             // Boucle qui va rajouter des div pour chaques artist
             for (i = 0; i <= 51; i++) {
@@ -47,7 +47,7 @@
                 var div1 = document.createElement('div');
                 div1.setAttribute('class', 'card airforce light-1 shadow-1 dropshadow-5')
                 div1.id = i;
-                div1.onclick = function() {
+                div1.onclick = function () {
                     redirect(this.id);
                 }
 
@@ -129,45 +129,45 @@
             var img = golangVar.match(normal);
             var MembersReg = MembersInfo.split(/,\]\s\[/)
             var naimu = NameInfo.split(',')
-                // Boucle qui va rajouter des div pour chaques artist
-                // La carte de l'artiste
+            // Boucle qui va rajouter des div pour chaques artist
+            // La carte de l'artiste
             var div1 = document.createElement('div');
             div1.setAttribute('class', 'card airforce light-1 shadow-1 dropshadow-5')
             div1.id = i;
-            div1.onclick = function() {
-                    redirect(this.id);
-                }
-                // Le cadre de la photo
+            div1.onclick = function () {
+                redirect(this.id);
+            }
+            // Le cadre de la photo
             var div2 = document.createElement('div');
             div2.setAttribute('class', 'card-image')
-                // La photo du groupe
+            // La photo du groupe
             var divimage = document.createElement('img');
             divimage.setAttribute('class', 'img-responsive')
             divimage.setAttribute('id', 'img')
             divimage.setAttribute('src', img[i])
             divimage.setAttribute('alt', 'Music')
-                // nom du groupe
+            // nom du groupe
             var div3 = document.createElement('div');
             var txt3 = document.createTextNode(naimu[i])
             div3.setAttribute('class', 'card-header')
             div3.appendChild(txt3)
-                // member list
+            // member list
             var div4 = document.createElement('div');
             var txt4 = document.createTextNode(MembersReg[i])
             div4.setAttribute('class', 'card-content')
             div4.appendChild(txt4)
-                // date de création
+            // date de création
             var div5 = document.createElement('div');
             var txt5 = document.createTextNode("CreationDate: " + DateReg[i])
             div5.setAttribute('class', 'card-content')
             div5.appendChild(txt5)
             var parent = document.getElementById("start")
-                // first album
+            // first album
             var div6 = document.createElement('div');
             var txt6 = document.createTextNode(("FirstAlbum: " + FirstReg[i]))
             div6.setAttribute('class', 'card-footer')
             div6.appendChild(txt6)
-                // On assemble les divs
+            // On assemble les divs
             document.body.appendChild(div1);
             parent.appendChild(div1)
             div1.appendChild(div2)
@@ -187,10 +187,10 @@
             var CreationDate = "{{.CreationDate}}"
             var First = "{{.FirstAlbum}}"
 
-            // On enlève les crochets inutile au début et a la fin du string
+            // On enlève les c rochets inutile au début et a la fin du string
             MembersInfo = MembersInfo.slice(2, -3);
             NameInfo = NameInfo.slice(1, -2)
-                // On sépare les informations
+            // On sépare les informations
             const DateSplit = /\d{4}/g;
             const FirstSplit = /\d{2}\W\d{2}\W\d{4}/g;
             // On place les informations dans des tableaux
@@ -225,8 +225,62 @@
                     searchCreate(i)
                 }
             }
-            
         }
+
+        function solo() {
+            // sinon si il trouve une virgule il print pas
+            let MembersInfo = "{{.Members}}"
+            MembersInfo = MembersInfo.slice(2, -3);
+            let MembersReg = MembersInfo.split(/,\]\s\[/)
+            let Filter = ","
+            deletes();
+            for (i = 0; i <= 51; i++) {
+                var thememe = MembersReg[i].includes(Filter)
+                if (thememe == false) {
+                    searchCreate(i)
+                }
+            }
+        }
+        function groupe() {
+            // sinon si il trouve une virgule il print pas
+            let MembersInfo = "{{.Members}}"
+            MembersInfo = MembersInfo.slice(2, -3);
+            let MembersReg = MembersInfo.split(/,\]\s\[/)
+            let Filter = ","
+            deletes();
+            for (i = 0; i <= 51; i++) {
+                var thememe = MembersReg[i].includes(Filter)
+                if (thememe == true) {
+                    searchCreate(i)
+                }
+            }
+        }
+
+        function before2000() {
+            var CreationDate = "{{.CreationDate}}"
+            const DateSplit = /\d{4}/g;
+            var DateReg = CreationDate.match(DateSplit)
+            deletes();
+            for (let i = 0; i <= 51; i++){
+                if (DateReg[i] < 2000){
+                    searchCreate(i)
+                } 
+            } 
+        }
+
+        function after2000() {
+            var CreationDate = "{{.CreationDate}}"
+            const DateSplit = /\d{4}/g;
+            var DateReg = CreationDate.match(DateSplit)
+            deletes();
+            for (let i = 0; i <= 51; i++){
+                if (DateReg[i] >= 2000){
+                    searchCreate(i)
+                } 
+            } 
+        }
+        
+
     </script>
 
 
@@ -245,10 +299,12 @@
                     <div class="row">
                         <div class="col-xs-6 col-md-4">
                             <div class="input-group">
-                                <input type="search" class="form-control navbar-btn" placeholder="Search" id="txtSearch" />
+                                <input type="search" class="form-control navbar-btn" placeholder="Search"
+                                    id="txtSearch" />
                                 <!-- onkeyup="searchArtists()" />  -->
                                 <div class="input-group-btn">
-                                    <button type='search' onclick="searchs()" class="btn btn-primary navbar-btn" id="searchbtn">
+                                    <button type='search' onclick="searchs()" class="btn btn-primary navbar-btn"
+                                        id="searchbtn">
                                         <span class="glyphicon glyphicon-search"></span>
                                     </button>
                                 </div>
@@ -267,10 +323,11 @@
             <img class="sidenav-logo" src="../assets/logo.png" alt="Logo" id="logoside" />
             <!-- <img class="sidenav-logo dropshadow-1" src="logo.png" alt="Logo" /> -->
         </div>
-        <a onclick="deletes()" class="sidenav-link active">Filter 1</a>
-        <a onclick="create()" class="sidenav-link">Filter 2</a>
-        <a href="#" class="sidenav-link">Filter 3</a>
-        <a href="#" class="sidenav-link">Filter 4</a>
+        <a onclick="create()" class="sidenav-link">All</a>
+        <a onclick="solo()" class="sidenav-link">Solo</a>
+        <a onclick="groupe()" class="sidenav-link">Band</a>
+        <a onclick="before2000()" class="sidenav-link">Before 2000</a>
+        <a onclick="after2000()" class="sidenav-link active">After 2000</a>
 
     </div>
 
@@ -291,7 +348,7 @@
     <script src="https://cdn.jsdelivr.net/npm/axentix@1.2.1/dist/js/axentix.min.js"></script>
     <footer class="footer airforce dark-5">
         <marquee>
-            Copyright © 2021 - Example       
+            Copyright © 2021 - Example
             <img src="../assets/logo.png" height="30px" width="30px">
             INFORMATION CORONAVIRUS, COVID-19. PROTÉGEONS-NOUS
             LES UNS LES AUTRES. Se laver régulièrement les mains
@@ -306,19 +363,14 @@
             contacts sociaux (6 maximum), Eviter de se toucher le visage, Aérer les pièces le plus souvent
             possible, au minimum quelques
             minutes toutes les heures, Saluer sans serrer la main
-            et arrêter les embrassades, Utiliser les outils numériques (TousAntiCovid). Pour plus d'informations retrouver nous sur notre site internet ou appeler au numero suivants: https://www.gouvernement.fr/info-coronavirus / 0 800 130 000
+            et arrêter les embrassades, Utiliser les outils numériques (TousAntiCovid). Pour plus d'informations
+            retrouver tous sur ce site internet ou appeler au numero suivants:
+            https://www.gouvernement.fr/info-coronavirus / 0 800 130 000
             (appel gratuit)
-    </marquee>
+        </marquee>
 
     </footer>
-    <!-- <script>
-        function searchArtists() {
-            var x = document.getElementById("start");
-            console.log(x.textContent);
 
-
-        }
-    </script> -->
 </body>
 
 </html>

@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/axentix@1.2.1/dist/css/axentix.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-
+    <script type="text/javascript" src="../assets/script.js"></script>
 
     <script type="text/javascript" id="testtt">
         function getParameters() {
@@ -34,12 +34,13 @@
             let MembersInfo = "{{.Members}}"
             let CreationDate = "{{.CreationDate}}"
             let First = "{{.FirstAlbum}}"
-            let relation = "{{.Relation}}"
+            let relation = "," + "{{.Relation}}"
 
             // On enlève les crochets inutile au début et a la fin du string
             MembersInfo = MembersInfo.slice(2, -3);
             NameInfo = NameInfo.slice(1, -2);
             relation = relation.slice(3, -3);
+
 
             // On sépare les informations
             const DateSplit = /\d{4}/g;
@@ -54,6 +55,7 @@
             let naimu = NameInfo.split(',')
             let dateLocation = relation.split(/\]\s\[/)
 
+            
             let LieuDatePourToi = dateLocation[id]
             let LieuDatePourMoi = dateLocation[id]
 
@@ -62,23 +64,19 @@
             let Date = LieuDatePourToi.split(regDate);
             let Lieu = LieuDatePourMoi.split(/,[\d{2}\W\d{2}\W\d{4}]*/);
 
-            console.log(LieuDatePourToi);
-            console.log(Date);
-
             // La carte de l'artiste
             let div1 = document.createElement('div');
             // div1.setAttribute('class', 'card airforce light-1 shadow-1 dropshadow-5')
 
             // Le cadre de la photo
             let div2 = document.createElement('div');
-            // div2.setAttribute('class', 'card-image')
-
             // La photo du groupe
             let divimage = document.createElement('img');
             divimage.setAttribute('class', 'imageIndexBigFatStyle')
             divimage.setAttribute('id', 'img')
             divimage.setAttribute('src', img[id])
             divimage.setAttribute('alt', 'Music')
+
 
             // nom du groupe
             let div3 = document.createElement('div');
@@ -94,16 +92,37 @@
             let txt7 = document.createTextNode(("Concert : "));
             div7.appendChild(txt7)
             div7.setAttribute('class', 'concertPart')
-            
+
             let div8 = document.createElement('div');
             div8.setAttribute('class', 'concertInfos')
-                for (i = 0; i <= Date.length -2; i++) {
-                    let divnul = document.createElement('div');
-                    let txt8 = document.createTextNode((Lieu[i+1]  + "\t"+ Date[i+1] + "\n"))
-                    divnul.appendChild(txt8)
-                    div8.appendChild(divnul)
+            for (i = 0; i <= Date.length - 1; i++) {
+                let divnul = document.createElement('div');
+                let txt8 = document.createTextNode(Lieu[i])
+                divnul.id = i + 100
+                divnul.onclick = function () {
+                    var id = this.getAttribute('id');
+                    document.getElementById(id - 100).style.display = "block";
+                }
+                divnul.appendChild(txt8)
+                div8.appendChild(divnul)
+            }
+
+            let div9 = document.createElement('div');
+
+            div9.setAttribute('class', 'concertInfos')
+            div9.setAttribute('id', 'date')
+            for (i = 0; i <= Date.length - 1; i++) {
+                let divnul2 = document.createElement('div');
+                divnul2.id = i
+                // divnul2.setAttribute('style', 'display: none')
+                let txt9 = document.createTextNode(Date[i])
+                divnul2.appendChild(txt9)
+                div9.appendChild(divnul2)
+                if (i == 0) {
+                    Date[i] = Date[i].slice(20)
                 }
 
+            }
 
             // On assemble les divs
             document.body.appendChild(div1);
@@ -112,7 +131,7 @@
             div1.appendChild(div2)
             div1.appendChild(div7)
             div1.appendChild(div8)
-            // ici
+            div1.appendChild(div9)
             div2.appendChild(divimage)
         }
     </script>
@@ -153,10 +172,18 @@
     <footer class="footer airforce dark-5">
         <marquee>
             Copyright © 2021 - Example
-            <img src="../assets/logo.png" height="30px" width="30px"> INFORMATION CORONAVIRUS, COVID-19. PROTÉGEONS-NOUS LES UNS LES AUTRES. Se laver régulièrement les mains ou utiliser une solution hydroalcoolique, Tousser ou éternuer dans son coude
-            ou dans un mouchoir, Se moucher dans un mouchoir à usage unique, Portez un masque chirurgical ou en tissu de catégorie 1 quand la distance de deux mètres ne peut pas être respectée, Respecter une distance d’au moins deux mètres avec les autres,
-            Limiter au maximum ses contacts sociaux (6 maximum), Eviter de se toucher le visage, Aérer les pièces le plus souvent possible, au minimum quelques minutes toutes les heures, visiter cette page : https://github.com/FeutreEnBois, Saluer sans
-            serrer la main et arrêter les embrassades, Utiliser les outils numériques (TousAntiCovid). Pour plus d'informations retrouver nous sur le site internet ou appeler au numero suivants: https://www.gouvernement.fr/info-coronavirus / 0 800 130
+            <img src="../assets/logo.png" height="30px" width="30px"> INFORMATION CORONAVIRUS, COVID-19. PROTÉGEONS-NOUS
+            LES UNS LES AUTRES. Se laver régulièrement les mains ou utiliser une solution hydroalcoolique, Tousser ou
+            éternuer dans son coude
+            ou dans un mouchoir, Se moucher dans un mouchoir à usage unique, Portez un masque chirurgical ou en tissu de
+            catégorie 1 quand la distance de deux mètres ne peut pas être respectée, Respecter une distance d’au moins
+            deux mètres avec les autres,
+            Limiter au maximum ses contacts sociaux (6 maximum), Eviter de se toucher le visage, Aérer les pièces le
+            plus souvent possible, au minimum quelques minutes toutes les heures, visiter cette super page :
+            https://github.com/FeutreEnBois, Saluer sans
+            serrer la main et arrêter les embrassades, Utiliser les outils numériques (TousAntiCovid). Pour plus
+            d'informations retrouver nous sur le site internet ou appeler au numero suivants:
+            https://www.gouvernement.fr/info-coronavirus / 0 800 130
             000 (appel gratuit)
         </marquee>
 

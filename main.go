@@ -89,6 +89,7 @@ func artistPage(w http.ResponseWriter, r *http.Request) {
 	TooPrintRelation := make([][]string, 0)
 
 	tpl := template.Must(template.ParseFiles("mygptrack/index.html"))
+
 	for i := range Artists {
 		//Image
 		TooPrint = append(TooPrint, Artists[i].Image)

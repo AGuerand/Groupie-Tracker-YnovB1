@@ -1,7 +1,4 @@
-    /* .img :hover{
-    filter: blur(4px) grayscale(1) brightness(30%) !important;
-} */
-    
+  
     body,
     html {
         height: 100%;
@@ -10,22 +7,23 @@
     body {
         /* overflow-y: hidden; Hide vertical scrollbar */
         overflow-x: hidden;
+        text-align: center;
         /* Hide horizontal scrollbar */
     }
     /* .img{
     position: relative;
     text-align: center;
-    /* filter: grayscale(0);
+    filter: grayscale(0);
 } */
     
-    #txt {
+    /* #date {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         color: white;
         display: none;
-    }
+    } */
     
     #logo {
         height: auto;
@@ -72,13 +70,6 @@
         height: fit-content;
     }
     
-    .container {
-        height: 94%;
-        width: 70%;
-        margin-right: 20%;
-        margin-left: 20%;
-        background-color: purple;
-    }
     /* #img{
     background-size:100% 100%;
     background-image: url("../assets/logo.png");
@@ -96,13 +87,16 @@
     }
     
     .imageIndexBigFatStyle {
-        width: 40%;
-        height: 40%;
-        text-align: center;
-        margin: auto;
-        display: flex;
+        width: 40% !important;
+        height: 40% !important;
+        text-align: center !important;
+        margin: auto !important;
+        display: flex !important;
     }
 
+    /* .imageIndexBigFatStyle :hover{
+        filter: blur(4px) grayscale(1) brightness(30%) !important;
+    } */
     .concertPart {
         text-align: center;
         font-family: "Times New Roman", Times, serif;
@@ -114,4 +108,16 @@
         text-align: center;
         font-size: 26px;
         font-family: "Times New Roman", Times, serif;
+        white-space: pre-wrap;
+        display: inline-block;
     }
+
+    /* #hitb {
+        position:absolute;
+        top: 120%;
+        left: 43.5%;
+        height:;
+        width:; 
+        display: block;
+
+    } */
